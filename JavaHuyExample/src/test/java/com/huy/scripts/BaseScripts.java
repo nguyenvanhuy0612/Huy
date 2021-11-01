@@ -1,6 +1,8 @@
 package com.huy.scripts;
 
 import com.huy.lib.Listener;
+
+import org.apache.log4j.Logger;
 import org.testng.annotations.*;
 
 @Listeners({
@@ -8,9 +10,14 @@ import org.testng.annotations.*;
 })
 public class BaseScripts {
 
+    private final Logger LOGGER = Logger.getLogger(this.getClass().getName());
+
+
+
     @BeforeSuite
     public void beforeSuite() {
         System.out.println("beforeSuite");
+        LOGGER.info("beforeSuite");
     }
 
     @BeforeClass
