@@ -11,7 +11,10 @@ public class Demo1 {
     public void test1() {
         Hashtable<String, String> lst1 = new Hashtable<>();
 
-        lst1.put("1", "F");
+        lst1.put("1", "A");
+        lst1.put("2", "B");
+        lst1.put("3", "C");
+        lst1.put("4", "D");
 
         String data = lst1.get("data");
         //System.out.println(data);
@@ -24,9 +27,15 @@ public class Demo1 {
         System.out.println(lst1.getOrDefault("2", "123"));
 
 
-
         HashMap<String, String> m1 = new HashMap<>();
 
+        m1.put("1", "F");
+
+        System.out.println(m1.getOrDefault("1", "A"));
+
+        m1.putAll(lst1);
+
+        System.out.println(m1);
 
 
 
