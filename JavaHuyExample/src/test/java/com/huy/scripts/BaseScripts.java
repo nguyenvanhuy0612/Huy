@@ -1,6 +1,5 @@
 package com.huy.scripts;
 
-
 import com.huy.lib.Listener;
 import org.testng.annotations.*;
 
@@ -8,6 +7,7 @@ import org.testng.annotations.*;
         Listener.class
 })
 public class BaseScripts {
+
     @BeforeSuite
     public void beforeSuite() {
         System.out.println("beforeSuite");
