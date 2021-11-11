@@ -2,10 +2,43 @@ package com.temp;
 
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Demo1 {
+
+
+    @Test
+    public void test2() {
+        final String regex = "\\{[^\\{\\}]+\\}";
+        final String string = "{group1:ID|=|1}, {group2:ID|=|1}, {group3:ID|=|1}\n"
+                + "{group1:ID|=|1}, {{group2:ID|=|1}, {group3:ID|=|1}}\n"
+                + "{{group2:ID|=|1}, {group3:ID|=|1}}, {group1:ID|=|1}";
+
+        final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+        final Matcher matcher = pattern.matcher(string);
+
+        ArrayList<String> lst = new ArrayList<>();
+
+        while (matcher.find()) {
+            //System.out.println("Full match: " + matcher.group(0));
+            lst.add(matcher.group().replaceAll("[\\{\\}]", ""));
+            for (int i = 1; i <= matcher.groupCount(); i++) {
+                //System.out.println("Group " + i + ": " + matcher.group(i));
+            }
+        }
+
+        System.out.println(lst);
+
+
+
+
+
+    }
+
 
     @Test
     public void test1() {
