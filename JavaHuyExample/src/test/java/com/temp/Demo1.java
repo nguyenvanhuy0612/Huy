@@ -1,5 +1,8 @@
 package com.temp;
 
+import com.google.gson.Gson;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -9,6 +12,25 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Demo1 {
+
+
+    @Test
+    public void test3() {
+        String jsonString = "{\"pageInfo\":{\"pageName\":\"abc\",\"pagePic\":\"http://example.com/content.jpg\"},\"posts\":[{\"post_id\":\"123456789012_123456789012\",\"actor_id\":\"1234567890\",\"picOfPersonWhoPosted\":\"http://example.com/photo.jpg\",\"nameOfPersonWhoPosted\":\"JaneDoe\",\"message\":\"Soundscool.Can'twaittoseeit!\",\"likesCount\":\"2\",\"comments\":[],\"timeOfPost\":\"1234567890\"}]}";
+        //System.out.println(jsonString);
+
+        Gson gson = new Gson();
+
+        JSONObject obj = new JSONObject(jsonString);
+        System.out.println(obj.toString(4));
+
+        String pageName = obj.getJSONObject("pageInfo").getString("pageName");
+        System.out.println("pageName : " + pageName);
+
+        JSONArray posts = obj.getJSONArray("posts");
+        System.out.println(posts.toString(4));
+
+    }
 
 
     @Test
