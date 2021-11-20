@@ -5,13 +5,60 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Hashtable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Demo1 {
+
+    @Test
+    public void test6() {
+        System.out.println(String.format("value is %2.0f", 32.33434));
+        System.out.println(String.format("value is %2.0f", 32.33434));
+    }
+
+    @Test
+    public void test5() throws ParseException {
+        final DateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        String example = "11/18/2021 22:56";
+        Date date = format.parse(example);
+//        System.out.println(date.getHours());
+//        System.out.println(date.getMinutes());
+//        System.out.println(date);
+//        System.out.println(format.format(date));
+
+
+        Calendar cal = Calendar.getInstance();
+
+        System.out.println(cal.getTime());
+
+        cal.setTime(date);
+        cal.add(Calendar.MINUTE, 3);
+
+
+
+        System.out.println(cal.get(Calendar.MINUTE));
+        System.out.println(cal.get(Calendar.HOUR_OF_DAY));
+
+        String out = format.format(cal.getTime());
+        System.out.println(out.substring(0, 10));
+
+
+        System.out.println(example.substring(0, 10));
+
+        cal.setTime(format.parse("01/02/2020 10:40"));
+        System.out.println(format.format(cal.getTime()));
+
+
+    }
+
+    @Test
+    public void test4() {
+        new A().show();
+    }
 
 
     @Test
@@ -95,4 +142,11 @@ public class Demo1 {
 
     }
 
+}
+
+
+class A {
+    public void show() {
+        System.out.println("Class A");
+    }
 }
