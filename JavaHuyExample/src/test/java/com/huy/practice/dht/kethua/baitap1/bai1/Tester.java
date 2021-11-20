@@ -1,9 +1,6 @@
 package com.huy.practice.dht.kethua.baitap1.bai1;
 
 
-import org.testng.annotations.Test;
-
-import java.io.InputStream;
 import java.util.Scanner;
 
 public class Tester {

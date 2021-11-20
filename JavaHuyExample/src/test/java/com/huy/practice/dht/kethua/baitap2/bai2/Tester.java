@@ -1,8 +1,6 @@
 package com.huy.practice.dht.kethua.baitap2.bai2;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Tester {
 

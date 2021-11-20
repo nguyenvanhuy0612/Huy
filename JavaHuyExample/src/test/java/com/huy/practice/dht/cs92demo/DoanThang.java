@@ -19,8 +19,8 @@ public class DoanThang {
      * hien thi
      */
     public void hienThi() {
-        System.out.printf("[(%.1f, %.1f), (%.1f, %.1f)]\n", this.diemDau.getHoangDo(), this.diemDau.getTungDo(),
-                this.diemCuoi.getHoangDo(), this.diemCuoi.getTungDo());
+        System.out.printf("[(%.1f, %.1f), (%.1f, %.1f)]\n", this.diemDau.getHoanhDo(), this.diemDau.getTungDo(),
+                this.diemCuoi.getHoanhDo(), this.diemCuoi.getTungDo());
     }
 
     public double tinhDoDai() {
@@ -32,7 +32,7 @@ public class DoanThang {
      * @return
      */
     public Diem timTrungDiem() {
-        double h = (this.diemDau.getHoangDo() + this.diemCuoi.getHoangDo()) / 2;
+        double h = (this.diemDau.getHoanhDo() + this.diemCuoi.getHoanhDo()) / 2;
         double t = (this.diemDau.getTungDo() + this.diemCuoi.getTungDo()) / 2;
         return new Diem(h, t);
     }

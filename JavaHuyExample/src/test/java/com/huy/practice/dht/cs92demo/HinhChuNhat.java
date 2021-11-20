@@ -12,7 +12,7 @@ public class HinhChuNhat {
      * @throws Exception
      */
     public HinhChuNhat(Diem trenTrai, Diem duoiPhai) throws Exception {
-        if (trenTrai.getHoangDo() < duoiPhai.getHoangDo() && trenTrai.getTungDo() > duoiPhai.getTungDo()) {
+        if (trenTrai.getHoanhDo() < duoiPhai.getHoanhDo() && trenTrai.getTungDo() > duoiPhai.getTungDo()) {
             this.trenTrai = trenTrai;
             this.duoiPhai = duoiPhai;
         } else {
@@ -26,7 +26,7 @@ public class HinhChuNhat {
      * @return
      */
     public double tinhDienTich() {
-        double chieuDai = this.duoiPhai.getHoangDo() - this.trenTrai.getHoangDo();
+        double chieuDai = this.duoiPhai.getHoanhDo() - this.trenTrai.getHoanhDo();
         double chieuRong = this.trenTrai.getTungDo() - this.duoiPhai.getTungDo();
         return chieuDai * chieuRong;
     }
@@ -35,10 +35,10 @@ public class HinhChuNhat {
      * hien thi hinh chu nhat tren console
      */
     public void hienThi() {
-        System.out.printf("(%.1f, %.1f)------------\n", this.trenTrai.getHoangDo(), this.trenTrai.getTungDo());
+        System.out.printf("(%.1f, %.1f)------------\n", this.trenTrai.getHoanhDo(), this.trenTrai.getTungDo());
         System.out.println("|                     |");
         System.out.println("|                     |");
-        System.out.printf("------------(%.1f, %.1f)\n", this.duoiPhai.getHoangDo(), this.duoiPhai.getTungDo());
+        System.out.printf("------------(%.1f, %.1f)\n", this.duoiPhai.getHoanhDo(), this.duoiPhai.getTungDo());
     }
 
     public Diem getTrenTrai() {
