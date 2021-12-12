@@ -15,6 +15,18 @@ import java.util.regex.Pattern;
 public class Demo1 {
 
     @Test
+    public void test7() {
+        String callbackPhoneNumberSelected = "";
+        String currentSelect = "(Phone 12) +13035383840 Etc/UTC";
+        Matcher matcher = Pattern.compile("(\\+?\\d{3,}[^)( ])").matcher(currentSelect);
+        if (matcher.find()) {
+            callbackPhoneNumberSelected = matcher.group(1);
+            System.out.println("The current selected phone number is : " + callbackPhoneNumberSelected);
+        }
+    }
+
+
+    @Test
     public void test6() {
         System.out.println(String.format("value is %2.0f", 32.33434));
         System.out.println(String.format("value is %2.0f", 32.33434));
