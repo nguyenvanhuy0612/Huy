@@ -9,11 +9,11 @@ public class GenericJava<K, V> {
         this.value = value;
     }
 
-    public GenericJava(){
+    public GenericJava() {
 
     }
 
-    public void print(){
+    public void print() {
         System.out.printf("{%s : %s}\n", key, value);
     }
 
