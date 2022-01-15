@@ -9,5 +9,17 @@ public class Test {
         GenericJava<String, Integer> ip = new GenericJava<>("Iphone 12", 1500);
         ip.print();
 
+        GenericJava<String, String> t = null;
+
+        try {
+            t = new GenericJava<>("1", "2");
+            throw new Exception();
+        }catch (Exception e){
+            e.printStackTrace();
+            t.print();
+            System.out.println("Abc");
+        }
+
+
     }
 }
