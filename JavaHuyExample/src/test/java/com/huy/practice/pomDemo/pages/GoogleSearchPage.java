@@ -1,6 +1,7 @@
 package com.huy.practice.pomDemo.pages;
 
-import com.huy.practice.pomDemo.data.EnvSetup;
+import com.huy.practice.pomDemo.lib.EnvSetup;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -8,8 +9,9 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ArrayList;
+import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class GoogleSearchPage {
     @FindBy(xpath = "//img[@alt='Google']")
@@ -40,35 +42,28 @@ public class GoogleSearchPage {
         this.inputSearchText.sendKeys(text);
     }
 
-    public void example() {
-
+    public WebElement presentElement(By by, int sec) {
+        EnvSetup.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(sec));
+        try {
+            return EnvSetup.driver.findElement(by);
+        }catch (NoSuchElementException e){
+            System.out.println("Not found element with locator: " + by);
+            return null;
+        }finally {
+            EnvSetup.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(EnvSetup.implicitWaitSec));
+        }
     }
-    enum WaitType {
-        VISIBLE,
-        INVISIBLE,
-        CLICKABLE,
-        SELECTED
-    }
 
-    private void waitForElement(WebElement webElement, WaitType waitType, int timeInSec) {
-        timeInSec = timeInSec <= 0 ? 30 : timeInSec;
-        WebDriverWait wait = new WebDriverWait(EnvSetup.driver, timeInSec);
-        switch (waitType) {
-            case VISIBLE:
-                wait.until(ExpectedConditions.visibilityOf(webElement));
-                break;
-            case INVISIBLE:
-                wait.until(ExpectedConditions.invisibilityOf(webElement));
-                break;
-            case CLICKABLE:
-                wait.until(ExpectedConditions.elementToBeClickable(webElement));
-                break;
-            case SELECTED:
-                wait.until(ExpectedConditions.elementToBeSelected(webElement));
-                break;
-            default:
-                wait.until(ExpectedConditions.visibilityOf(webElement));
-                break;
+    public WebElement presentElement(WebElement element, int sec) {
+        EnvSetup.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(sec));
+        try {
+            return new WebDriverWait(EnvSetup.driver, Duration.ofSeconds(sec))
+                    .until(ExpectedConditions.visibilityOf(element));
+        }catch (NoSuchElementException e){
+            System.out.println("Not found element: " + element);
+            return null;
+        }finally {
+            EnvSetup.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(EnvSetup.implicitWaitSec));
         }
     }
 
@@ -83,7 +78,7 @@ public class GoogleSearchPage {
 //                break;
 //            }
             try {
-                waitForElement(element, WaitType.CLICKABLE, 30);
+                presentElement(element, 30);
                 element.click();
                 break;
             } catch (Exception ignored) {
