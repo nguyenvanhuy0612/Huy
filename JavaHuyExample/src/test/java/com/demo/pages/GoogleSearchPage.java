@@ -1,6 +1,6 @@
-package com.huy.practice.pomDemo.pages;
+package com.demo.pages;
 
-import com.huy.practice.pomDemo.lib.EnvSetup;
+import com.demo.lib.EnvSetup;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;

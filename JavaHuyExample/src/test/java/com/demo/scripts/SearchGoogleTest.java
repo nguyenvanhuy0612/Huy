@@ -1,12 +1,12 @@
-package com.huy.practice.pomDemo.scripts;
+package com.demo.scripts;
 
-import com.huy.practice.pomDemo.lib.EnvSetup;
-import com.huy.practice.pomDemo.lib.UtilityFunc;
-import com.huy.practice.pomDemo.pages.GoogleSearchPage;
+import com.demo.lib.EnvSetup;
+import com.demo.lib.UtilityFunc;
+import com.demo.pages.GoogleSearchPage;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
-public class SearchGoogleTest extends Base{
+public class SearchGoogleTest extends Base {
     GoogleSearchPage googleSearchPage;
 
     @Override
@@ -57,5 +57,10 @@ public class SearchGoogleTest extends Base{
         googleSearchPage.clickSearchButton();
         UtilityFunc utilityFunc = new UtilityFunc();
         utilityFunc.wait(10);
+    }
+
+    @Test
+    public void test2() {
+        System.out.println("test2");
     }
 }

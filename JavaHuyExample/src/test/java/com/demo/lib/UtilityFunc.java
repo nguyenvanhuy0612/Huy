@@ -1,4 +1,4 @@
-package com.huy.practice.pomDemo.lib;
+package com.demo.lib;
 
 public class UtilityFunc {
     public void wait(int timeInSec) {

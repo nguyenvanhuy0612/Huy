@@ -1,8 +1,8 @@
-package com.huy.practice.pomDemo.scripts;
+package com.demo.scripts;
 
-import com.huy.practice.pomDemo.lib.EnvSetup;
-import com.huy.practice.pomDemo.lib.SuiteListener;
-import com.huy.practice.pomDemo.lib.UtilityFunc;
+import com.demo.lib.SuiteListener;
+import com.demo.lib.EnvSetup;
+import com.demo.lib.UtilityFunc;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -19,6 +19,7 @@ public abstract class Base {
     public abstract void performBeforeTestOperation();
     public abstract void performBeforeClassOperation();
     public abstract void performBeforeMethodOperation();
+
     public abstract void performAfterMethodOperation();
     public abstract void performAfterClassOperation();
     public abstract void performAfterTestOperation();
