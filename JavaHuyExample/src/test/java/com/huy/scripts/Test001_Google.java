@@ -9,4 +9,15 @@ public class Test001_Google extends BaseScripts {
         System.out.println("test1");
     }
 
+
+    @Override
+    public void performBeforeMethodOperation() {
+
+    }
+
+    @Override
+    public void performAfterMethodOperation() {
+
+    }
+
 }

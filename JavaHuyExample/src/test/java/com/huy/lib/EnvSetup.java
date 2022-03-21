@@ -1,7 +1,11 @@
 package com.huy.lib;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.time.Duration;
 import java.util.HashMap;
 
 public class EnvSetup {
@@ -53,5 +57,17 @@ public class EnvSetup {
         BROWSER_NAME = utilityFunc.readPropertyValue("Browser").isEmpty() ? "FIREFOX" : utilityFunc.readPropertyValue("Browser");
         DEFAULT_BROWSER_NAME = BROWSER_NAME;
         System.out.println("Environment variables initialized...");
+    }
+    public static WebDriver initDriver() {
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--no-sandbox");
+        chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("disable-gpu");
+        WebDriver driver = new ChromeDriver(chromeOptions); //chrome
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+        driver.manage().window().maximize();
+        return driver;
     }
 }

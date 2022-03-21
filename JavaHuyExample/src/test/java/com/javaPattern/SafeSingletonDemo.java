@@ -1,4 +1,4 @@
-package com.javaPatternTMA;
+package com.javaPattern;
 
 public class SafeSingletonDemo {
 }
