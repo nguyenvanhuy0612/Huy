@@ -23,11 +23,6 @@ public class WebDriverProxy implements InvocationHandler {
     }
 
     private void checkForPopupAndKill() {
-        checkPopup popup = new checkPopup();
-        if (popup.isDisplayed()) {
-            System.out.println("You damn popup, you appearded again!!?? I am gonna kill you now!!");
-            popup.close();
-        }
         Common.sleep(10);
     }
 }
