@@ -37,49 +37,49 @@ public abstract class Base {
         EnvSetup.driver = new ChromeDriver(chromeOptions); //chrome
         EnvSetup.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(EnvSetup.implicitWaitSec));
         EnvSetup.driver.manage().window().maximize();
-        performBeforeSuiteOperation();
+        this.performBeforeSuiteOperation();
     }
 
     @BeforeTest
     public void beforeTest() {
         System.out.println("BeforeTest");
-        performBeforeTestOperation();
+        this.performBeforeTestOperation();
     }
 
     @BeforeClass
     public void beforeClass() {
         System.out.println("BeforeClass");
-        performBeforeClassOperation();
+        this.performBeforeClassOperation();
     }
 
     @BeforeMethod
     public void beforeMethod() {
         System.out.println("BeforeMethod");
-        performBeforeMethodOperation();
+        this.performBeforeMethodOperation();
     }
 
     @AfterMethod
     public void afterMethod() {
         System.out.println("AfterMethod");
-        performAfterMethodOperation();
+        this.performAfterMethodOperation();
     }
 
     @AfterClass
     public void afterClass() {
         System.out.println("AfterClass");
-        performAfterClassOperation();
+        this.performAfterClassOperation();
     }
 
     @AfterTest
     public void afterTest() {
         System.out.println("AfterTest");
-        performAfterTestOperation();
+        this.performAfterTestOperation();
     }
 
     @AfterSuite
     public void tearDown() {
         System.out.println("AfterSuite");
-        performAfterSuiteOperation();
+        this.performAfterSuiteOperation();
         if (EnvSetup.driver != null) EnvSetup.driver.quit();
     }
 }
