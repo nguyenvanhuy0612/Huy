@@ -14,11 +14,43 @@ import java.util.concurrent.TimeUnit;
 
 public class Test3 {
 
+
+    @Test
+    public void test13() {
+        boolean a = true, b = false, c =  true;
+
+        System.out.println("true && true: " + (true && true));
+        System.out.println("true && false: " + (true && false));
+        System.out.println("false && true: " + (false && true));
+        System.out.println("false && false: " + (false && false));
+        System.out.println();
+        System.out.println("true || true: " + (true || true));
+        System.out.println("true || false: " + (true || false));
+        System.out.println("false || true: " + (false || true));
+        System.out.println("false || false: " + (false || false));
+        System.out.println();
+        System.out.println("!(true && true): " + !(true && true));
+        System.out.println("!(true && false)): " + !(true && false));
+        System.out.println("!(false && true) " + !(false && true));
+        System.out.println("!(false && false): " + !(false && false));
+        System.out.println();
+        System.out.println("!(true || true): " + !(true || true));
+        System.out.println("!(true || false): " + !(true || false));
+        System.out.println("!(false || true): " + !(false || true));
+        System.out.println("!(false || false): " + !(false || false));
+
+    }
+
     @Test
     public void test12() {
 
+        boolean a = true, b = false, c =  true;
 
-        System.out.println(false || true);
+        System.out.println();
+
+
+
+        System.out.println(false || false);
 
 
 
