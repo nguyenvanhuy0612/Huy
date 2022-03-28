@@ -1,9 +1,12 @@
 package com.temp;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -34,6 +37,23 @@ public class AddUserTemp {
 
     }
 
+    @Test
+    public void test1() throws InterruptedException {
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        int count = 0;
+        if ((Boolean) executor.executeScript("return window.jQuery != undefined")) {
+            while (!(Boolean) executor.executeScript("return jQuery.active == 0")) {
+                Thread.sleep(4000);
+                if (count > 4) break;
+                count++;
+            }
+        }
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until((ExpectedCondition<Boolean>) wd ->
+                ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+
+        wait.pollingEvery(Duration.ofSeconds(1));
+    }
 
 
     @Test

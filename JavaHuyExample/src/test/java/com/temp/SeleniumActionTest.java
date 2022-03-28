@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -41,6 +42,9 @@ public class SeleniumActionTest {
 
         SeleniumActionTest.wait(15);
 
+        int x = 10;
+
+        new WebDriverWait(driver, Duration.ofSeconds(10)).pollingEvery(Duration.ofSeconds(30 > x ? 1 :2));
 
         driver.close();
 
