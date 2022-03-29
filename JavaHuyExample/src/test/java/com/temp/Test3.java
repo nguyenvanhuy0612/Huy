@@ -1,22 +1,85 @@
 package com.temp;
 
 import com.google.gson.Gson;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Test3 {
+    WebDriver driver;
+
+    @Test
+    public void test15() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+
+        Actions actions = new Actions(driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+
+
+    }
+
+    @Test
+    public void test14() {
+        List<String> list = new ArrayList<>();
+        list.add("A");
+        list.add("B");
+        list.add("null");
+        list.add("D");
+        list.add("E");
+
+        list.forEach(s -> {
+            if (s.equals("D"))
+                return;
+            System.out.println(s);
+        });
+
+        list.stream().filter(Objects::nonNull).forEach(s -> {
+            if (s.equals("D"))
+                return;
+            System.out.println(s);
+        });
+        List<String> aLists = list.stream().filter(s -> s.equals("B")).collect(Collectors.toList());
+        System.out.println(aLists.get(0));
+
+    }
 
 
     @Test
     public void test13() {
+
+        ArrayList<String> lists = new ArrayList<>();
+        lists.add("123");
+        lists.add("144");
+        lists.add("55");
+
+        lists.forEach(System.out::println);
+
+        List<String> collect = lists.stream().map(s -> s + "12").collect(Collectors.toList());
+
+        System.out.println(lists);
         boolean a = true, b = false, c =  true;
 
         System.out.println("true && true: " + (true && true));

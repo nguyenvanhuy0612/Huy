@@ -2,6 +2,7 @@ package com.temp;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -25,6 +26,10 @@ public class SeleniumActionTest {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
         //
         Actions actions = new Actions(driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+
         //
         driver.get("https://www.24h.com.vn/");
 //        SeleniumActionTest.wait(2);
