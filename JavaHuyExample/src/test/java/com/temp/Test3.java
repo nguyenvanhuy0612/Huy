@@ -8,11 +8,14 @@ import org.json.JSONObject;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -24,10 +27,24 @@ import java.util.stream.Stream;
 public class Test3 {
     WebDriver driver;
 
+
     @Test
-    public void test15() {
+    public void test16() {
+        int number = 31;
+        int x = 0;
+        int newNumber = number > 60 ? 15 : (number > 30 ? x = 8 : 2);
+        System.out.println(newNumber);
+        System.out.println(x);
+
+        x = number > 100 ? 11 : 12;
+    }
+
+    @Test
+    public void test15() throws InterruptedException {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addExtensions(new File("C:\\Users\\Admin\\Jupyter\\SelectorsHub.crx"));
+        driver = new ChromeDriver(options);
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
@@ -36,6 +53,15 @@ public class Test3 {
         Actions actions = new Actions(driver);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        driver.get("https://google.com");
+
+        wait.pollingEvery(Duration.ofSeconds(10));
+
+//        wait.until(ExpectedConditions.visibilityOfElementLocated())
+
+        System.out.println();
+        Thread.sleep(6);
 
 
 
