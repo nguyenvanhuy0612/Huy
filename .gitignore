@@ -3,3 +3,8 @@
 .idea
 __pycache__
 target
+test-output
+bin
+.settings
+.project
+.classpath
