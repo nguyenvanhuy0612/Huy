@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class Common {
@@ -28,47 +29,48 @@ public class Common {
 //        }
 //    }
 
-    public WebElement presentElement(By by, int sec) {
-        EnvSetup.WEBDRIVER.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        try {
-            return new WebDriverWait(EnvSetup.WEBDRIVER, sec).until(ExpectedConditions.visibilityOfElementLocated(by));
-        } catch (Exception e) {
-            return null;
-        } finally {
-            EnvSetup.WEBDRIVER.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        }
-    }
+	public WebElement presentElement(By by, int sec) {
+		EnvSetup.WEBDRIVER.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+		try {
+			return new WebDriverWait(EnvSetup.WEBDRIVER, Duration.ofSeconds(sec))
+					.until(ExpectedConditions.visibilityOfElementLocated(by));
+		} catch (Exception e) {
+			return null;
+		} finally {
+			EnvSetup.WEBDRIVER.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		}
+	}
 
-    public boolean isElementDisplay(By by, int sec) {
-        EnvSetup.WEBDRIVER.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        try {
-            new WebDriverWait(EnvSetup.WEBDRIVER, sec).until(ExpectedConditions.visibilityOfElementLocated(by));
-            return true;
-        } catch (Exception e) {
-            return false;
-        } finally {
-            EnvSetup.WEBDRIVER.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        }
-    }
+	public boolean isElementDisplay(By by, int sec) {
+		EnvSetup.WEBDRIVER.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		try {
+			new WebDriverWait(EnvSetup.WEBDRIVER, Duration.ofSeconds(sec))
+					.until(ExpectedConditions.visibilityOfElementLocated(by));
+			return true;
+		} catch (Exception e) {
+			return false;
+		} finally {
+			EnvSetup.WEBDRIVER.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		}
+	}
 
-    @Test
-    public void test() {
-        WebElement element = presentElement(By.id("id1"), 30);
-        if (element == null)
-            System.out.println("not found");
-        else {
-            System.out.println("found");
-            element.click();
-        }
+	@Test
+	public void test() {
+		WebElement element = presentElement(By.id("id1"), 30);
+		if (element == null)
+			System.out.println("not found");
+		else {
+			System.out.println("found");
+			element.click();
+		}
 
-        boolean isDisplays = isElementDisplay(By.id("id1"), 30);
-        if (isDisplays)
-            System.out.println("not found");
-        else
-        {
-            System.out.println("found");
-            EnvSetup.WEBDRIVER.findElement(By.id("id1")).click();
-        }
-    }
+		boolean isDisplays = isElementDisplay(By.id("id1"), 30);
+		if (isDisplays)
+			System.out.println("not found");
+		else {
+			System.out.println("found");
+			EnvSetup.WEBDRIVER.findElement(By.id("id1")).click();
+		}
+	}
 
 }

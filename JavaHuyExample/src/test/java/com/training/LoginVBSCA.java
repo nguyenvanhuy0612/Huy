@@ -15,57 +15,56 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginVBSCA {
 
+	@Test
+	public void DateTest() {
+		final SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+		Calendar cal = Calendar.getInstance();
+	}
 
-    @Test
-    public void DateTest() {
-        final SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-        Calendar cal = Calendar.getInstance();
-    }
+	@Test
+	public void EnterTest() {
+		System.out.println("Init driver");
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
+		System.out.println("Enter to url");
+		driver.get("http://vbsca.ca/login/");
 
-    @Test
-    public void EnterTest() {
-        System.out.println("Init driver");
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		Common.waitSec(2);
 
-        System.out.println("Enter to url");
-        driver.get("http://vbsca.ca/login/");
+		System.out.println("Close driver");
+		driver.close();
 
-        Common.waitSec(2);
+	}
 
-        System.out.println("Close driver");
-        driver.close();
+	@Test
+	public void LoginTest() {
+		System.out.println("Init driver");
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
 
-    }
+		System.out.println("Enter to url");
+		driver.get("http://vbsca.ca/login/login.asp");
 
-    @Test
-    public void LoginTest() {
-        System.out.println("Init driver");
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+		System.out.println("Enter username and password");
+		driver.findElement(By.xpath("//input[@name='txtUsername']")).sendKeys("admin");
+		driver.findElement(By.xpath("//input[@name='txtPassword']")).sendKeys("123");
+		System.out.println("Click login button");
+		driver.findElement(By.xpath("//input[@value='Login']")).click();
 
-        System.out.println("Enter to url");
-        driver.get("http://vbsca.ca/login/login.asp");
+		Common.waitSec(5);
 
-        System.out.println("Enter username and password");
-        driver.findElement(By.xpath("//input[@name='txtUsername']")).sendKeys("admin");
-        driver.findElement(By.xpath("//input[@name='txtPassword']")).sendKeys("123");
-        System.out.println("Click login button");
-        driver.findElement(By.xpath("//input[@value='Login']")).click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		// wait.until(ExpectedConditions.numberOfElementsToBe())
+		wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//div[text()='Proactive Outreach Dashboard']")));
 
-        Common.waitSec(5);
+		if (new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.alertIsPresent()) != null) {
+			driver.switchTo().alert().accept();
+		}
+		System.out.println("Close driver");
+		driver.close();
 
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-        //wait.until(ExpectedConditions.numberOfElementsToBe())
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='Proactive Outreach Dashboard']")));
-
-        if (new WebDriverWait(driver, 5).until(ExpectedConditions.alertIsPresent()) != null ){
-            driver.switchTo().alert().accept();
-        }
-        System.out.println("Close driver");
-        driver.close();
-
-    }
+	}
 }
