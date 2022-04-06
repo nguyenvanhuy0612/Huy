@@ -1,4 +1,4 @@
-package com.temp.annotation;
+package com.insight.annotation;
 
 import java.lang.reflect.Field;
 import java.time.LocalDateTime;

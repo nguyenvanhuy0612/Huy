@@ -52,7 +52,7 @@ public class SearchGoogleTest extends Base {
     @Test
     public void test1(){
         EnvSetup.driver.get("https://google.com");
-        googleSearchPage.inputSearch("huy");
+        googleSearchPage.inputSearch("huy test 22222");
         utilityFunc.wait(2);
         googleSearchPage.clickSearchButton();
         UtilityFunc utilityFunc = new UtilityFunc();

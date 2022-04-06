@@ -1,4 +1,4 @@
-package com.temp.annotation;
+package com.insight.annotation;
 
 import java.time.LocalDateTime;
 

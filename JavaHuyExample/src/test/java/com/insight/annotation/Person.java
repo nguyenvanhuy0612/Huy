@@ -1,4 +1,4 @@
-package com.temp.annotation;
+package com.insight.annotation;
 
 public class Person {
     private String age;

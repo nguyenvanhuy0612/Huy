@@ -1,15 +1,40 @@
-package com.insight.consumer;
+package com.insight.streamapi.example;
 
 import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 
 public class Example1 {
+
 
     static void printValue(int val) {
         System.out.println(val);
     }
 
     public static void main(String[] args) {
+
+        BiPredicate<String, String> BiPredicate = (s1, s2) -> {
+            System.out.println(s1);
+            System.out.println(s2);
+            return false;
+        };
+
+        System.out.println(BiPredicate.test("s1", "s2"));
+
+        BiPredicate<String, String> BiPredicate2 = new BiPredicate<String, String>() {
+
+            @Override
+            public boolean test(String s1, String s2) {
+                System.out.println(s1);
+                System.out.println(s2);
+                return false;
+            }
+        };
+
+        System.out.println(BiPredicate2.test("s1", "s2"));
+
+
+
         // Create Consumer interface
         Consumer<String> consumer = new Consumer<String>() {
             @Override
@@ -17,6 +42,9 @@ public class Example1 {
                 System.out.println("Hello, " + name);
             }
         };
+
+        // Create Consumer interface use lambda
+        Consumer<String> consumer0 = name -> System.out.println("Hello, " + name);
         // Calling Consumer method
         consumer.accept("gpcoder"); // Hello, gpcoder
 
