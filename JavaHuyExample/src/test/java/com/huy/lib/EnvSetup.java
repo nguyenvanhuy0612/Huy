@@ -1,5 +1,7 @@
 package com.huy.lib;
 
+//import io.github.bonigarcia.wdm.WebDriverManager;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -62,7 +64,7 @@ public class EnvSetup {
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--no-sandbox");
-        chromeOptions.addArguments("--headless");
+        //chromeOptions.addArguments("--headless");
         chromeOptions.addArguments("disable-gpu");
         WebDriver driver = new ChromeDriver(chromeOptions); //chrome
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));

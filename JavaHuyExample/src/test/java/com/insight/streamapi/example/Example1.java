@@ -1,17 +1,36 @@
 package com.insight.streamapi.example;
 
+import java.util.Arrays;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class Example1 {
 
 
     static void printValue(int val) {
         System.out.println(val);
+        return;
     }
-
+    public static void printValue(String s)
+    {
+        if (s.length() > 10) {
+            return;
+        }
+        System.out.println("Hello " + s);
+    }
     public static void main(String[] args) {
+
+//        Consumer<String> hello = s -> {
+//            System.out.println("Hello +" + s);
+//        };
+
+        Arrays.asList("123", "32423").forEach(s -> System.out.println("hello " + s));
+
+
+//
+//        hello.andThen(hello).accept("123");
 
         BiPredicate<String, String> BiPredicate = (s1, s2) -> {
             System.out.println(s1);
@@ -64,4 +83,6 @@ public class Example1 {
         bc.accept("Huy", "Huong Dan Java");
 
     }
+
+
 }
