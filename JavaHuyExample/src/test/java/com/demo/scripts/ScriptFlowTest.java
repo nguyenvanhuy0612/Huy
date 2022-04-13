@@ -3,6 +3,12 @@ package com.demo.scripts;
 import org.testng.annotations.Test;
 
 public class ScriptFlowTest extends Base {
+
+    @Override
+    public void setup() {
+        System.out.println("BeforeSuite");
+    }
+
     @Override
     public void performBeforeSuiteOperation() {
         System.out.println("Entering method: " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -47,6 +53,7 @@ public class ScriptFlowTest extends Base {
     public void test1() {
         System.out.println("Entering method: " + Thread.currentThread().getStackTrace()[1].getMethodName());
     }
+
     @Test
     public void test2() {
         System.out.println("Entering method: " + Thread.currentThread().getStackTrace()[1].getMethodName());
