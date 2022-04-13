@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Test Flow Suite" parallel="false">
+    <!-- TC1  -->
+    <test name="Test Flow">
+        <classes>
+            <class name="com.demo.scripts.ScriptFlowTest">
+                <methods>
+                    <include name="test1"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <!-- TC1  -->
+    <test name="Test Flow 2">
+        <classes>
+            <class name="com.demo.scripts.ScriptFlowTest">
+                <methods>
+                    <include name="test2"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

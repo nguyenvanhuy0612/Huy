@@ -1,55 +1,54 @@
-package com.demo.lib;
+package com.demo.scripts;
 
-import org.testng.*;
+import org.testng.annotations.Test;
 
-public class SuiteListener implements ISuiteListener, ITestListener {
+public class ScriptFlowTest extends Base {
     @Override
-    public void onStart(ISuite suite) {
+    public void performBeforeSuiteOperation() {
         System.out.println("Entering method: " + Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
     @Override
-    public void onFinish(ISuite suite) {
+    public void performBeforeTestOperation() {
         System.out.println("Entering method: " + Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
     @Override
-    public void onTestStart(ITestResult result) {
+    public void performBeforeClassOperation() {
         System.out.println("Entering method: " + Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
     @Override
-    public void onTestSuccess(ITestResult result) {
+    public void performBeforeMethodOperation() {
         System.out.println("Entering method: " + Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
     @Override
-    public void onTestFailure(ITestResult result) {
+    public void performAfterMethodOperation() {
         System.out.println("Entering method: " + Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
     @Override
-    public void onTestSkipped(ITestResult result) {
+    public void performAfterClassOperation() {
         System.out.println("Entering method: " + Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
     @Override
-    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+    public void performAfterTestOperation() {
         System.out.println("Entering method: " + Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
     @Override
-    public void onTestFailedWithTimeout(ITestResult result) {
+    public void performAfterSuiteOperation() {
         System.out.println("Entering method: " + Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
-    @Override
-    public void onStart(ITestContext context) {
+    @Test
+    public void test1() {
         System.out.println("Entering method: " + Thread.currentThread().getStackTrace()[1].getMethodName());
     }
-
-    @Override
-    public void onFinish(ITestContext context) {
+    @Test
+    public void test2() {
         System.out.println("Entering method: " + Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }
