@@ -25,6 +25,11 @@ public class JsonTest {
         jsonObject.get("gzFileList").getAsJsonArray().add("file4");
         System.out.println();
 
+
+        int i = jsonObject.get("name").getAsInt();
+        Integer i1 = jsonObject.get("name").getAsInt();
+        Long i2 = jsonObject.get("name").getAsLong();
+
     }
 
     public static void main(String[] args) {
@@ -40,15 +45,13 @@ public class JsonTest {
 
         // text to object
         //1. declare object type
-        Type objType = new TypeToken<Student>(){}.getType();
+        Type objType = new TypeToken<Student>() {
+        }.getType();
 
         //2. convert json text -> object
-        Student std2 =  gson.fromJson(stdJsonText, objType);
+        Student std2 = gson.fromJson(stdJsonText, objType);
 
         std2.print();
-
-
-
 
 
     }
