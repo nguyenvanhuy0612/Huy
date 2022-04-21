@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name="Data provider test" parallel="false">
+    <test name="Provider test 1"
+          preserve-order="true">
+        <parameter name="dataFile" value="WorkspaceCCaaS.xlsx"/>
+        <parameter name="dataSheet" value="Agent"/>
+        <parameter name="browser" value="phantomjs"/>
+        <classes>
+            <class name="com.training.testng.dataprovider.DataProviderTest">
+                <methods>
+                    <include name="test"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

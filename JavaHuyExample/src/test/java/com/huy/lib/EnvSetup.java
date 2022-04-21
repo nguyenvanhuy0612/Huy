@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class EnvSetup {
     // EnvSetup - Func
-    private UtilityFunc utilityFunc = new UtilityFunc();
+    private UtilityFun utilityFunc = new UtilityFun();
 
     // Browser details
     public static String BROWSER_NAME;

@@ -4,7 +4,7 @@ import org.testng.*;
 
 public class Listener implements ISuiteListener, ITestListener {
     private static final ThreadLocal<ISuite> ACCESS = new ThreadLocal<>();
-    private UtilityFunc utilityFunc = new UtilityFunc();
+    private UtilityFun utilityFunc = new UtilityFun();
 
     public static ISuite getAccess() {
         System.out.println(Listener.class.getName() + " getAccess()");
