@@ -8,7 +8,7 @@ public class Example1
 {
 	public static void main(String[] args)
 	{
-		int $ = -1;
+		int $ = 6;
 		String[] __team$ = new String[]
 		{ "a.Thien", "Linh", "Truong", "a.Duong", "Hoang", "Huy" };
 		BiConsumer<Integer, String[]> welcome = (i, s) -> {
