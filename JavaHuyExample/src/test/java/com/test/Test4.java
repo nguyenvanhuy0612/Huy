@@ -8,10 +8,12 @@ import java.util.List;
 public class Test4 {
     public static void main(String[] args) {
         // copy
-        int copiesCount = 5;
+        int copiesCount = 0;
         Integer value = 10;
         List<Integer> copies = new ArrayList<>(Collections.nCopies(copiesCount, value));
         System.out.println(copies);
+        List<Integer> copies2 = new ArrayList<>();
+        copies2.addAll(copies);
         Integer[] integers = new Integer[]
                 {1, 2, 3, 4, 5};
         copies.addAll(Arrays.asList(1, 2, 4, 5));
