@@ -1,4 +1,4 @@
-package com.insight.java8.breaklabeled;
+package com.insight.breaklabeled;
 
 public class Example1 {
     public static void main(String[] args) {
