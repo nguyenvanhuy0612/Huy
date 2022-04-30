@@ -73,19 +73,19 @@ public class Test7_XML {
     }
 
 
-    public List<MutableTriple<String, String, WebElement>> getPropertyElement() {
+    public List<MutableTriple<String, WebElement, String>> getPropertyElement() {
         //key, type, element
-        List<MutableTriple<String, String, WebElement>> propertyElementList = new ArrayList<>();
+        List<MutableTriple<String, WebElement, String>> propertyElementList = new ArrayList<>();
 
         String nodePropertiesLoc = "//div[@id='propertiesBody']";
         String nodePropertiesRowLoc = "//div[@id='propertiesBody']//div[@class='tableRow']";
 
-        for (int i = 0; i < driver.findElements(By.xpath(nodePropertiesRowLoc)).size(); i++) {
+        for (int i = 1; i <= driver.findElements(By.xpath(nodePropertiesRowLoc)).size(); i++) {
             String currColumnLoc = nodePropertiesRowLoc + "[" + i + "]/div[contains(@class, 'tableColumn')]";
             String key = driver.findElement(By.xpath(currColumnLoc + "[1]")).getAttribute("data-property-section");
             WebElement element = driver.findElement(By.xpath(currColumnLoc + "[2]//*[contains(@data-property, '@')]"));
             String type = element.getTagName();
-            propertyElementList.add(MutableTriple.of(key, type, element));
+            propertyElementList.add(MutableTriple.of(key, element, type));
         }
         return propertyElementList;
     }
