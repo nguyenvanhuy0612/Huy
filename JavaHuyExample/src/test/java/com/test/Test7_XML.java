@@ -101,7 +101,7 @@ public class Test7_XML {
         for (Node node : nodeList) {
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) node;
-                HashMap<String, String> attrList = new HashMap<>();
+                HashMap<String, String> attrMap = new HashMap<>();
                 String nodeName = eElement.getTagName();
                 nodeName = nodeName.equals("action") ? "call" : nodeName;
                 nodeName = nodeName.equals("ContactAttribute") ? "address" : nodeName;
@@ -111,15 +111,15 @@ public class Test7_XML {
                 NamedNodeMap attributes = eElement.getAttributes();
                 if (attributes.getLength() == 0) {
                     System.out.println("nodeName: " + nodeName);
-                    attrList.put(nodeName, node.getTextContent());
+                    attrMap.put(nodeName, node.getTextContent());
                 } else {
                     System.out.println("nodeName: " + nodeName);
                 }
                 for (int j = 0; j < attributes.getLength(); j++) {
                     Attr attr = (Attr) attributes.item(j);
-                    attrList.put(attr.getName(), attr.getValue());
+                    attrMap.put(attr.getName(), attr.getValue());
                 }
-                System.out.println(attrList);
+                System.out.println(attrMap);
                 // process attribute for node name
 //                getPropertyElement().forEach(stringWebElementStringMutableTriple -> {
 //                    stringWebElementStringMutableTriple.toString();
