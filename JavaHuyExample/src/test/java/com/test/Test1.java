@@ -4,10 +4,13 @@ import com.google.gson.Gson;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +43,22 @@ public class Test1 {
 
         Select select = new Select(driver.findElement(By.xpath("//html")));
         select.selectByValue("huy");
+
+        WebElement source = driver.findElement(By.xpath("//div"));
+        WebElement target = driver.findElement(By.xpath("//div//td"));
+
+        Actions actions = new Actions(driver);
+
+        actions.moveToElement(source)
+                .pause(Duration.ofSeconds(1))
+                .clickAndHold(source)
+                .pause(Duration.ofSeconds(1))
+                .moveByOffset(1, 0)
+                .moveToElement(target)
+                .moveByOffset(1, 0)
+                .pause(Duration.ofSeconds(1))
+                .release().perform();
+
 
 
 
