@@ -24,7 +24,7 @@ public class Test7_XML {
     @Test
     public void testXml() throws Exception {
         String sourceFilePath = "D:\\AutoPOM2\\POM\\src\\test\\java\\com\\data\\strategy\\";
-        String content = new String(Files.readAllBytes(Paths.get(sourceFilePath + "CGRStrategyCommonNamesPHONE2.xml")));
+        String content = new String(Files.readAllBytes(Paths.get(sourceFilePath + "WSE_Progressive_Agent_Script_error_strategy.xml")));
         content = content.substring(content.indexOf("<Handler"), content.indexOf("</tns:AvayaPIMContactStrategy>"))
                 .trim();
         InputSource inputSource = new InputSource();
@@ -101,32 +101,34 @@ public class Test7_XML {
         for (Node node : nodeList) {
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) node;
-                List<MutablePair<String, String>> attrList = new ArrayList<>();
+                HashMap<String, String> attrList = new HashMap<>();
                 String nodeName = eElement.getTagName();
+                nodeName = nodeName.equals("action") ? "call" : nodeName;
+                nodeName = nodeName.equals("ContactAttribute") ? "address" : nodeName;
                 // drag and drop for node name
-                System.out.println("nodeName: " + nodeName);
+                // PROCESS NODE
+
                 NamedNodeMap attributes = eElement.getAttributes();
                 if (attributes.getLength() == 0) {
-                    System.out.println("nodeName -> TEXT: " + node.getTextContent());
-                    attrList.add(MutablePair.of(eElement.getTagName(), node.getTextContent()));
-
+                    System.out.println("nodeName: " + nodeName);
+                    attrList.put(nodeName, node.getTextContent());
+                } else {
+                    System.out.println("nodeName: " + nodeName);
                 }
                 for (int j = 0; j < attributes.getLength(); j++) {
                     Attr attr = (Attr) attributes.item(j);
-                    String attrName = attr.getName();
-                    String attrValue = attr.getValue();
-                    System.out.println("attrName: " + attrName);
-                    System.out.println("attrValue: " + attrValue);
-                    attrList.add(MutablePair.of(attr.getName(), attr.getValue()));
+                    attrList.put(attr.getName(), attr.getValue());
                 }
+                System.out.println(attrList);
                 // process attribute for node name
-
+//                getPropertyElement().forEach(stringWebElementStringMutableTriple -> {
+//                    stringWebElementStringMutableTriple.toString();
+//                });
                 System.out.println("=====================================================");
                 if (node.hasChildNodes()) {
                     nodeProcess(node.getFirstChild());
                 }
             }
-
         }
     }
 }
