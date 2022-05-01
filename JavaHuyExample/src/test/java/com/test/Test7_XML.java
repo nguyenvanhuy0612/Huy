@@ -46,10 +46,12 @@ public class Test7_XML {
         // get <staff>
         NodeList nListHandler = doc.getElementsByTagName("Handler");
         System.out.println("nListHandler.getLength(): " + nListHandler.getLength());
+        int handlerNumber = 1;
         for (int i = 0; i < nListHandler.getLength(); i++) {
             Node nHandler = nListHandler.item(i);
             if (nHandler.getNodeType() == Node.ELEMENT_NODE) {
-                nodeProcess(nHandler, i + 1);
+                nodeProcess(nHandler, handlerNumber);
+                ++handlerNumber;
             }
         }
     }
