@@ -72,15 +72,17 @@ public class Test7_XML {
         return propertyElementList;
     }
 
-    public List getNodeElement(String nodeName) {
+    public List getNodeElement(String nodeName, String parentNodeName) {
         List nodeElementList = new ArrayList<>();
         String nodeFamilyLoc = "//div[@id='destinationTree']";
-        By nodeNameLoc = By.xpath(nodeFamilyLoc + )
-        WebElement
+        //div[@id='destinationTree']//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'address')]
+        By nodeNameLoc = By.xpath(nodeFamilyLoc + "//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + nodeName + "')]");
+        By parentNodeNameLoc = By.xpath(nodeFamilyLoc + "//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + parentNodeName + "')]");
 
 
         return nodeElementList;
     }
+
     public void nodeProcess(Node nHandler) {
         List<Node> nodeList = new ArrayList<>();
         nodeList.add(nHandler);
