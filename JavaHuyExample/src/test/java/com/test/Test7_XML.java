@@ -52,27 +52,6 @@ public class Test7_XML {
         }
     }
 
-    public void locatorProcess(String element) {
-        String leftBaseLoc = "//div[@id='left-component']";
-        String midBaseLoc = "//div[@id='destinationTree']";
-        String rightBaseLoc = "//div[@id='inner-right-component']";
-
-        String nodePropertiesLoc = "//div[@id='propertiesBody']";
-        String nodePropertiesRowLoc = "//div[@id='propertiesBody']//div[@class='tableRow']";
-
-        for (int i = 0; i < driver.findElements(By.xpath(nodePropertiesRowLoc)).size(); i++) {
-
-        }
-
-
-        //div[@id='destinationTree']//a[contains(@id, 'AvayaPIMContactStrategy')]
-        String contactStrategyLoc = midBaseLoc + "//a[contains(@id, 'AvayaPIMContactStrategy')]";
-
-        String menuLoc = "//ul[contains(@class, 'jstree-default-contextmenu')]";
-        String addNodeLoc = menuLoc + "//a[contains(text(), 'Add Node')]";
-        getPropertyElement().forEach(e -> System.out.println(e.getLeft() + " - MID - " + e.getRight()));
-    }
-
 
     public List<MutableTriple<String, WebElement, String>> getPropertyElement() {
         //key, type, element
@@ -93,14 +72,18 @@ public class Test7_XML {
         return propertyElementList;
     }
 
-    public void nodeProcess(Node n) {
+    public void nodeProcess(Node nHandler) {
         List<Node> nodeList = new ArrayList<>();
-        nodeList.add(n);
-        Node nextNode = n.getNextSibling();
+        nodeList.add(nHandler);
+        Node nextNode = nHandler.getNextSibling();
         while (nextNode != null) {
             nodeList.add(nextNode);
             nextNode = nextNode.getNextSibling();
         }
+        String nodeFamilyLoc = "//div[@id='destinationTree']";
+        Node parentNode = nodeList.get(0);
+        String parentNodeName = parentNode.getNodeName();
+
         for (Node node : nodeList) {
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) node;
@@ -124,9 +107,10 @@ public class Test7_XML {
                 }
                 System.out.println(attrMap);
                 // process attribute for node name
-//                getPropertyElement().forEach(stringWebElementStringMutableTriple -> {
-//                    stringWebElementStringMutableTriple.toString();
-//                });
+                //  PROCESS PROPERTIES
+                getPropertyElement().forEach(stringWebElementStringMutableTriple -> {
+                    System.out.println(stringWebElementStringMutableTriple.toString());
+                });
                 System.out.println("=====================================================");
                 if (node.hasChildNodes()) {
                     nodeProcess(node.getFirstChild());
