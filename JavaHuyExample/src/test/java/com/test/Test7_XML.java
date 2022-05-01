@@ -6,6 +6,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.w3c.dom.*;
 import org.xml.sax.InputSource;
@@ -15,6 +16,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.Duration;
 import java.util.*;
 import java.util.function.Consumer;
 
@@ -72,15 +74,47 @@ public class Test7_XML {
         return propertyElementList;
     }
 
-    public List getNodeElement(String nodeName, String parentNodeName) {
-        List nodeElementList = new ArrayList<>();
+    public WebElement getNodeElement(String nodeName, String parentNodeName) {
         String nodeFamilyLoc = "//div[@id='destinationTree']";
         //div[@id='destinationTree']//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'address')]
-        By nodeNameLoc = By.xpath(nodeFamilyLoc + "//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + nodeName + "')]");
-        By parentNodeNameLoc = By.xpath(nodeFamilyLoc + "//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + parentNodeName + "')]");
-
-
-        return nodeElementList;
+        By nodeNameLoc = By.xpath(nodeFamilyLoc + "//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + nodeName.toLowerCase() + "')]");
+        By parentNodeNameLoc = By.xpath(nodeFamilyLoc + "//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + parentNodeName.toLowerCase() + "')]");
+        // check present of parent node
+        WebElement pNodeE = presentOf(parentNodeNameLoc, 10);
+        // get parent node Y location
+        int pNodeY = pNodeE.getLocation().getY();
+        // check present of node, if present, get Y and compare with parent Y: parent Y <= node Y
+        // if not found or match node, click to parent node and click add node
+        WebElement nodeE = presentOf(nodeNameLoc, 10);
+        Actions actions = new Actions(driver);
+        String menuLoc = "//ul[contains(@class, 'jstree-contextmenu')][contains(@class, 'jstree-default-contextmenu')]";
+        if (nodeE == null || nodeE.getLocation().getY() < pNodeY) {
+            // add node
+            pNodeE.click();
+            actions.moveToElement(pNodeE)
+                    .pause(Duration.ofMillis(500))
+                    .contextClick(pNodeE)
+                    .pause(Duration.ofMillis(500))
+                    .perform();
+            sleep(2);
+            WebElement addNode = driver.findElement(By.xpath(menuLoc + "/li[./a[contains(., 'Add')]]"));
+            //ul[contains(@class, 'jstree-contextmenu')][contains(@class, 'jstree-default-contextmenu')]/li[./a[contains(., 'Add')]]/ul/li[.//*[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'restr')]]
+            String addNodeLoc = menuLoc + "/li[./a[contains(., 'Add')]]/ul/li[.//*[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+                    " 'abcdefghijklmnopqrstuvwxyz'), '" + nodeName.toLowerCase() + "')]]";
+            actions.moveToElement(addNode)
+                    .pause(Duration.ofMillis(500))
+                    .perform();
+            WebElement node = driver.findElement(By.xpath(addNodeLoc));
+            sleep(2);
+            actions.moveToElement(node)
+                    .pause(Duration.ofMillis(500))
+                    .click()
+                    .perform();
+            sleep(2);
+        }
+        nodeE = presentOf(nodeNameLoc, 10);
+        nodeE.click();
+        return nodeE;
     }
 
     public void nodeProcess(Node nHandler) {
@@ -103,7 +137,8 @@ public class Test7_XML {
                 nodeName = nodeName.equals("ContactAttribute") ? "address" : nodeName;
                 // drag and drop for node name
                 // PROCESS NODE
-
+                getNodeElement(nodeName, parentNodeName);
+                parentNodeName = nodeName;
                 NamedNodeMap attributes = eElement.getAttributes();
                 if (attributes.getLength() == 0) {
                     System.out.println("nodeName: " + nodeName);
@@ -126,6 +161,36 @@ public class Test7_XML {
                     nodeProcess(node.getFirstChild());
                 }
             }
+        }
+    }
+
+    public WebElement presentOf(By by, int sec) {
+        try {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(sec));
+            return driver.findElement(by);
+        } catch (Exception e) {
+            return null;
+        } finally {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+        }
+    }
+
+    public WebElement presentOf(WebElement element, int sec) {
+        try {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(sec));
+            element.isDisplayed();
+            return element;
+        } catch (Exception e) {
+            return null;
+        } finally {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+        }
+    }
+
+    public void sleep(double sec) {
+        try {
+            Thread.sleep((long) (sec * 1000));
+        } catch (Exception e) {
         }
     }
 }
