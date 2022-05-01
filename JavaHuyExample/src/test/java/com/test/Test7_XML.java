@@ -49,7 +49,7 @@ public class Test7_XML {
         for (int i = 0; i < nListHandler.getLength(); i++) {
             Node nHandler = nListHandler.item(i);
             if (nHandler.getNodeType() == Node.ELEMENT_NODE) {
-                nodeProcess(nHandler);
+                nodeProcess(nHandler, i + 1);
             }
         }
     }
@@ -74,13 +74,13 @@ public class Test7_XML {
         return propertyElementList;
     }
 
-    public WebElement getNodeElement(String nodeName, String parentNodeName) {
+    public WebElement getNodeElement(String nodeName, int handlerNumber) {
         String nodeFamilyLoc = "//div[@id='destinationTree']";
         //div[@id='destinationTree']//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'address')]
         By nodeNameLoc = By.xpath(nodeFamilyLoc + "//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + nodeName.toLowerCase() + "')]");
-        By parentNodeNameLoc = By.xpath(nodeFamilyLoc + "//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + parentNodeName.toLowerCase() + "')]");
+        By handlerLoc = By.xpath("(" + nodeFamilyLoc + "//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'handler')])[" + handlerNumber + "]");
         // check present of parent node
-        WebElement pNodeE = presentOf(parentNodeNameLoc, 10);
+        WebElement pNodeE = presentOf(handlerLoc, 10);
         // get parent node Y location
         int pNodeY = pNodeE.getLocation().getY();
         // check present of node, if present, get Y and compare with parent Y: parent Y <= node Y
@@ -117,7 +117,7 @@ public class Test7_XML {
         return nodeE;
     }
 
-    public void nodeProcess(Node nHandler) {
+    public void nodeProcess(Node nHandler, int handlerNumber) {
         List<Node> nodeList = new ArrayList<>();
         nodeList.add(nHandler);
         Node nextNode = nHandler.getNextSibling();
@@ -126,8 +126,6 @@ public class Test7_XML {
             nextNode = nextNode.getNextSibling();
         }
         Node parentNode = nodeList.get(0);
-        String parentNodeName = parentNode.getNodeName();
-
         for (Node node : nodeList) {
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) node;
@@ -137,8 +135,7 @@ public class Test7_XML {
                 nodeName = nodeName.equals("ContactAttribute") ? "address" : nodeName;
                 // drag and drop for node name
                 // PROCESS NODE
-                getNodeElement(nodeName, parentNodeName);
-                parentNodeName = nodeName;
+                getNodeElement(nodeName, handlerNumber);
                 NamedNodeMap attributes = eElement.getAttributes();
                 if (attributes.getLength() == 0) {
                     System.out.println("nodeName: " + nodeName);
@@ -152,13 +149,13 @@ public class Test7_XML {
                 }
                 System.out.println(attrMap);
                 // process attribute for node name
-                //  PROCESS PROPERTIES
+                // PROCESS PROPERTIES
                 getPropertyElement().forEach(stringWebElementStringMutableTriple -> {
                     System.out.println(stringWebElementStringMutableTriple.toString());
                 });
                 System.out.println("=====================================================");
                 if (node.hasChildNodes()) {
-                    nodeProcess(node.getFirstChild());
+                    nodeProcess(node.getFirstChild(), handlerNumber);
                 }
             }
         }
