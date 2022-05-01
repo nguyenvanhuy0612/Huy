@@ -64,7 +64,7 @@ public class Test7_XML {
             WebElement currColumnElem = tableRow.findElement(By.xpath("./div[contains(@class, 'tableColumn')][1]"));
             String key = currColumnElem.getAttribute("data-property-section");
             //String eLocAtSign = currColumnLoc + "[2]//*[contains(@data-property, '@')]";
-            WebElement element =tableRow.findElement(By.xpath("./div[contains(@class, 'tableColumn')][2]//*[contains(translate(@data-property, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '"
+            WebElement element = tableRow.findElement(By.xpath("./div[contains(@class, 'tableColumn')][2]//*[contains(translate(@data-property, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '"
                     + key.replaceAll("@", "").toLowerCase() + "')]"));
             String type = element.getTagName();
             propertyElementList.add(MutableTriple.of(key, element, type));
@@ -72,6 +72,15 @@ public class Test7_XML {
         return propertyElementList;
     }
 
+    public List getNodeElement(String nodeName) {
+        List nodeElementList = new ArrayList<>();
+        String nodeFamilyLoc = "//div[@id='destinationTree']";
+        By nodeNameLoc = By.xpath(nodeFamilyLoc + )
+        WebElement
+
+
+        return nodeElementList;
+    }
     public void nodeProcess(Node nHandler) {
         List<Node> nodeList = new ArrayList<>();
         nodeList.add(nHandler);
@@ -80,7 +89,6 @@ public class Test7_XML {
             nodeList.add(nextNode);
             nextNode = nextNode.getNextSibling();
         }
-        String nodeFamilyLoc = "//div[@id='destinationTree']";
         Node parentNode = nodeList.get(0);
         String parentNodeName = parentNode.getNodeName();
 
