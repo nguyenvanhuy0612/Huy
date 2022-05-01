@@ -98,12 +98,12 @@ public class Test7_XML {
                     .perform();
             sleep(2);
             WebElement addNode = driver.findElement(By.xpath(menuLoc + "/li[./a[contains(., 'Add')]]"));
-            //ul[contains(@class, 'jstree-contextmenu')][contains(@class, 'jstree-default-contextmenu')]/li[./a[contains(., 'Add')]]/ul/li[.//*[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'restr')]]
-            String addNodeLoc = menuLoc + "/li[./a[contains(., 'Add')]]/ul/li[.//*[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
-                    " 'abcdefghijklmnopqrstuvwxyz'), '" + nodeName.toLowerCase() + "')]]";
             actions.moveToElement(addNode)
                     .pause(Duration.ofMillis(500))
                     .perform();
+            //ul[contains(@class, 'jstree-contextmenu')][contains(@class, 'jstree-default-contextmenu')]/li[./a[contains(., 'Add')]]/ul/li[.//*[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'restr')]]
+            String addNodeLoc = menuLoc + "/li[./a[contains(., 'Add')]]/ul/li[.//*[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'," +
+                    " 'abcdefghijklmnopqrstuvwxyz'), '" + nodeName.toLowerCase() + "')]]";
             WebElement node = driver.findElement(By.xpath(addNodeLoc));
             sleep(2);
             actions.moveToElement(node)
