@@ -70,6 +70,7 @@ public class Test7_XML {
 
         String menuLoc = "//ul[contains(@class, 'jstree-default-contextmenu')]";
         String addNodeLoc = menuLoc + "//a[contains(text(), 'Add Node')]";
+        getPropertyElement().forEach(e -> System.out.println(e.getLeft() + " - MID - " + e.getRight()));
     }
 
 
@@ -78,12 +79,14 @@ public class Test7_XML {
         List<MutableTriple<String, WebElement, String>> propertyElementList = new ArrayList<>();
 
         String nodePropertiesLoc = "//div[@id='propertiesBody']";
-        String nodePropertiesRowLoc = "//div[@id='propertiesBody']//div[@class='tableRow']";
+        String nodePropertiesRowLoc = "//div[@class='nodeProperties']//div[@class='tableRow']";
 
-        for (int i = 1; i <= driver.findElements(By.xpath(nodePropertiesRowLoc)).size(); i++) {
-            String currColumnLoc = nodePropertiesRowLoc + "[" + i + "]/div[contains(@class, 'tableColumn')]";
-            String key = driver.findElement(By.xpath(currColumnLoc + "[1]")).getAttribute("data-property-section");
-            WebElement element = driver.findElement(By.xpath(currColumnLoc + "[2]//*[contains(@data-property, '@')]"));
+        for (WebElement tableRow : driver.findElements(By.xpath(nodePropertiesRowLoc))) {
+            WebElement currColumnElem = tableRow.findElement(By.xpath("./div[contains(@class, 'tableColumn')][1]"));
+            String key = currColumnElem.getAttribute("data-property-section");
+            //String eLocAtSign = currColumnLoc + "[2]//*[contains(@data-property, '@')]";
+            WebElement element =tableRow.findElement(By.xpath("./div[contains(@class, 'tableColumn')][2]//*[contains(translate(@data-property, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '"
+                    + key.replaceAll("@", "").toLowerCase() + "')]"));
             String type = element.getTagName();
             propertyElementList.add(MutableTriple.of(key, element, type));
         }
