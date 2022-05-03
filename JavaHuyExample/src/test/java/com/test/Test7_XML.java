@@ -127,7 +127,6 @@ public class Test7_XML {
             nodeList.add(nextNode);
             nextNode = nextNode.getNextSibling();
         }
-        Node parentNode = nodeList.get(0);
         for (Node node : nodeList) {
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) node;
@@ -156,7 +155,8 @@ public class Test7_XML {
                     System.out.println(stringWebElementStringMutableTriple.toString());
                 });
                 System.out.println("=====================================================");
-                if (node.hasChildNodes()) {
+                if (node.hasChildNodes())
+                {
                     nodeProcess(node.getFirstChild(), handlerNumber);
                 }
             }
