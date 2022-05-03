@@ -46,12 +46,10 @@ public class Test7_XML {
         // get <staff>
         NodeList nListHandler = doc.getElementsByTagName("Handler");
         System.out.println("nListHandler.getLength(): " + nListHandler.getLength());
-        int handlerNumber = 1;
-        for (int i = 0; i < nListHandler.getLength(); i++) {
-            Node nHandler = nListHandler.item(i);
+        for (int handlerNumber = 1; handlerNumber <= nListHandler.getLength(); handlerNumber++) {
+            Node nHandler = nListHandler.item(handlerNumber - 1);
             if (nHandler.getNodeType() == Node.ELEMENT_NODE) {
                 nodeProcess(nHandler, handlerNumber);
-                ++handlerNumber;
             }
         }
     }
@@ -155,8 +153,7 @@ public class Test7_XML {
                     System.out.println(stringWebElementStringMutableTriple.toString());
                 });
                 System.out.println("=====================================================");
-                if (node.hasChildNodes())
-                {
+                if (node.hasChildNodes()) {
                     nodeProcess(node.getFirstChild(), handlerNumber);
                 }
             }
