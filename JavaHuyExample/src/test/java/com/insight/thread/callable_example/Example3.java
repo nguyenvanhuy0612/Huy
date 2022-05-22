@@ -44,9 +44,9 @@ public class Example3 {
         System.out.println("START");
 
         try {
-            List<Future<String>> features = executor.invokeAll(Arrays.asList(c, c, c));
-            for (Future<String> feature : features){
-                String data = feature.get();
+            List<Future<String>> futures = executor.invokeAll(Arrays.asList(c, c, c));
+            for (Future<String> future : futures){
+                String data = future.get();
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
