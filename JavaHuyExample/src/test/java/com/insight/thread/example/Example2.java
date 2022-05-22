@@ -56,17 +56,17 @@ public class Example2 {
         AtomicReference<String> name = new AtomicReference<>("");
 
         executorService.execute(()-> {
-            this.myTask("~~Task1");
+            this.myTask("~~ Task1");
             name.set("1");
         });
 
         executorService.execute(()-> {
-            this.myTask("!!Task 2");
+            this.myTask("!! Task 2");
             name.set("2222");
         });
 
         executorService.execute(()-> {
-            this.myTask("@@Task 3");
+            this.myTask("@@ Task 3");
             name.set("3333");
         });
 
