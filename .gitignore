@@ -1,10 +1,11 @@
 **/.idea
 **/logs
 .idea
-__pycache__
+*__pycache__
 target
 test-output
 bin
 .settings
 .project
 .classpath
+*.ipynb_checkpoints
