@@ -1,4 +1,4 @@
-package com.insight.log4j_example;
+package com.insight.log4j2_example;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
