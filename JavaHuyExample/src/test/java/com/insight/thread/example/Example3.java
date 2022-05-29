@@ -1,7 +1,5 @@
 package com.insight.thread.example;
 
-import com.huy.practice.dht.kethua.overriding.A;
-import org.iq80.snappy.HadoopSnappyCodec;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
