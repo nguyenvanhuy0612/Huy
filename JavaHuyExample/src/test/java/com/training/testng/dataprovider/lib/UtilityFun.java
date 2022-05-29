@@ -43,6 +43,12 @@ public class UtilityFun
 		File file = new File("D:\\POM\\src\\test\\java\\com\\data\\testcasedata\\WorkspaceCCaaS.xlsx");
 		FileInputStream fis = new FileInputStream(file);
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		// or pass file path (String) to arg of XSSFWorkbook
+		/*
+		public XSSFWorkbook(String path) throws IOException {
+        this(openPackage(path));
+    	}
+		*/
 		XSSFSheet sheet = wb.getSheetAt(0);
 		wb.close();
 		int lastRowNum = sheet.getLastRowNum();

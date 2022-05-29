@@ -20,6 +20,8 @@ public class EnvSetup {
     public static String DRIVER_PATH;
 
     public static WebDriver WEBDRIVER;
+    public static WebDriver driver;
+    public static int implicitWaitSec;
 
     // Project path
     public static String USER_PROPERTY_FILE_PATH;
