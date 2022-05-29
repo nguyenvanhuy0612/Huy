@@ -1,6 +1,9 @@
 package com.demo.lib;
 
+import org.testng.ITestResult;
+
 import java.io.FileInputStream;
+import java.util.HashMap;
 import java.util.Properties;
 
 public class UtilityFun {
@@ -53,5 +56,9 @@ public class UtilityFun {
             System.out.println("Exception occurred in {ReadPropertyValue} method...");
         }
         return sValue;
+    }
+
+    public HashMap<String, String> getTestDetails(ITestResult result) {
+        return new HashMap<>();
     }
 }
