@@ -9,6 +9,9 @@ public class Example1 {
     private final Logger log = LogManager.getLogger(this.getClass().getName());
 
     public static void main(String[] args) {
+        System.out.printf("System.out.format: %s%n", Thread.currentThread().getStackTrace()[1].getMethodName());
+
+        logger.info(Thread.currentThread().getStackTrace()[1].getMethodName());
         logger.info("Example1");
         logger.error("Error");
         new Example1().testLog();

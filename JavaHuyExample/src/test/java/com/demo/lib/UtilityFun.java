@@ -53,7 +53,8 @@ public class UtilityFun {
             properties.load(fs);
             sValue = properties.getProperty(sKey);
         } catch (Exception e) {
-            System.out.println("Exception occurred in {ReadPropertyValue} method...");
+            System.out.printf("Exception occurred in method %s, with sKey=%s sPropertyFileName=%s%n",
+                    Thread.currentThread().getStackTrace()[1].getMethodName(), sKey, sPropertyFileName);
         }
         return sValue;
     }
