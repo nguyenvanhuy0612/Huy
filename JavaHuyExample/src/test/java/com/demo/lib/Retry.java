@@ -8,7 +8,7 @@ import org.testng.ITestResult;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Retry implements IRetryAnalyzer {
-    private static final Logger log = LogManager.getLogger(Retry.class);
+    private final Logger log = LogManager.getLogger(this.getClass().getName());
     private static final ConcurrentHashMap<String, Integer> retCount = new ConcurrentHashMap<>();
     UtilityFun objUtil = new UtilityFun();
 
