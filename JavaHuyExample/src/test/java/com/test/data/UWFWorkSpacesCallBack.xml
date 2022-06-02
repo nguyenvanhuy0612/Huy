@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="POMWS_Callback" parallel="false">
+	<!-- TC 1 -->
+	<test
+		name="Verify agent is able to create callback of type standard and verify phone number for setting up callback is default used for dialing"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="verifyCallbackPhoneNumber" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 2 -->
+	<test
+		name="Verify setting callback on the free form number of standard type"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="callbackFreeNumStandardType" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 3 -->
+	<test
+		name="Verify agent is able to check phone number in the DNC list before setting callback"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="callbackCheckDNC" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 4 -->
+	<test
+		name="Verify setting the callback using customer time of type agent set some callback notes when callback is received verify the notes"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="callbackCustomerTime" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 5 -->
+	<test
+		name="Verify that only Standard and Campaign type of callback are allowed to be created"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="verifyCallbackTypeStandardCampaign" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 6 -->
+	<test
+		name="Verify that agent can reschedule or override the callback"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="verifyRescheduleOrOverride" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 7 -->
+	<test
+		name="Verify that user is not able to create callback on the past date or time"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="verifyUnableUsePastdatatimeSetCallback" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 8 -->
+	<test
+		name="verify user can create callback with system timezone and phone number timezone is different using Customer Time"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include
+						name="verifySystemAndPhoneNumTimezoneDifferentUseCustomerTime" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 9 -->
+	<test
+		name="verify user can create callback with system timezone and phone number timezone is different using Local Time"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include
+						name="verifySystemAndPhoneNumTimezoneDifferentUseLocalTime" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 10 -->
+	<test
+		name="verify user can create callback with system timezone and external number timezone is different using Customer Time"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include
+						name="verifySystemAndExternalPhoneNumTimezoneDifferentUseCustomerTime" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 11 -->
+	<test
+		name="verify user can create callback with system timezone and external number timezone is different using Local Time"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include
+						name="verifySystemAndExternalPhoneNumTimezoneDifferentUseLocalTime" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 12 -->
+	<test
+		name="Verify that user can set some Agent notes when callback is received verify the notes"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="setAndVerifyAgentNotes" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 13 -->
+	<test
+		name="Verify setting the callback using local time of type agent set some callback notes when callback is received verify the notes"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="setCallbackLocalTimeWithNotes" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 14 -->
+	<test
+		name="Verify that user can create Callback with numbers having prefix"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="createCallbackPrefix" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 15 -->
+	<test
+		name="Verify that there are error messages displayed when the user does not select destinate campaign for Campaign Type is Campaign"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="verifyCallbackCampaignType" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 16 -->
+	<test
+		name="Verify that user can save Agent Notes while setting up Callback"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="saveAndVerifyAgentNotes" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 17 -->
+	<test
+		name="Verify that user can Refresh Agent Notes to see previous notes when campaign execute callback"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="refreshAgentNotes" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 18 -->
+	<test
+		name="Verify that user can edit Customer detail when campaign execute callback"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="editCustomerDetailsWhileExeCallback" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 19 -->
+	<test
+		name="Verify that user can check contact callback in DNC when campaign execute callback"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="checkDNCWhileExecuteCallback" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 20 -->
+	<test
+		name="Verify that user can add contact callback to DNC when campaign execute callback"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="addDNCWhileExecuteCallback" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 21 -->
+	<test
+		name="Verify that user can hold contact when campaign execute callback"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="holdCallWhileExecuteCallback" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 22 -->
+	<test
+		name="Verify that user can cancel preview when campaign execute callback"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="cancelPreviewWhileExecuteCallback" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 23 -->
+	<test
+		name="Verify that user can not set Callback when the time of Callback Start Date is higher than the Callback Expiry Date"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="cannotSetCallbackStartDataHigherExpireDate" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 24 -->
+	<test
+		name="Verify that there is notice message displaying when modified Callback user information"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="messageWhenModifiedCallback" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 25 -->
+	<test
+		name="Verify that information customer display fully when receiving callback call"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="customerInformationCallback" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC 26 -->
+	<test
+		name="Verify that there is warning message displaying when select time in the past"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="CallBack" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesCallback_Test">
+				<methods>
+					<include name="warringMessageWhenSelectTimeInPast" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>

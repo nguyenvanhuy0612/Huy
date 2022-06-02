@@ -1,7 +1,10 @@
 package com.test;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.pagefactory.ByAll;
+import org.openqa.selenium.support.pagefactory.ByChained;
 
 public class GoogleSearchPage {
 

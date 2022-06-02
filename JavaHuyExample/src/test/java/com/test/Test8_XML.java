@@ -95,6 +95,13 @@ public class Test8_XML
 
     public void processNodeList(NodeList nList)
     {
+        /*
+        Node — The base datatype of the DOM.
+        Element — Represents an individual element in the DOM.
+        Attr — Represents an attribute of an element.
+        Text — The actual content of an Element or Attr.
+        Document — Represents the entire XML document. A Document object is often referred to as a DOM tree.
+         */
         for (int i = 0; i < nList.getLength(); i++)
         {
             Node node = nList.item(i);

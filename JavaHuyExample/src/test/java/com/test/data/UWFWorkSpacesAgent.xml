@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="POMWS_Agent" parallel="false">
+	<!-- TC1 -->
+	<test
+		name="Check agent is able to goto Not ready while in the call and agent goes to not ready after current call is over"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="goNotReadyWhileInCall" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC2 -->
+	<test
+		name="Dial default number from preview record while in call Hold and Unhold then release the line and wrap-up the call"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="previewCallAndHold" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC3 -->
+	<test
+		name="Dial default number from preview then drop call and redial on other number and then on free form number then release the line and wrap-up the call"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="previewCallRedial" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC4 -->
+	<test
+		name="Verify the customer details are shown and can be updated"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="verifyAndUpdateCustomerDetails" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC5 -->
+	<test
+		name="Verify that masked attributes are shown as masked at WS"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="verifyMaskedAttributes" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC6 -->
+	<test
+		name="Verify read-only attributes are shown read only and can not be edited"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="verifyReadOnlyAttributes" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC7 -->
+	<test
+		name="Verify Agent goes to Agent Walk away state if 2 consecutive calls are auto disposed"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="verifyWalkAwayState" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC8 -->
+	<test name="Agent can only logout when agent finish work"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="verifyLogoutRequireFinishWork" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC9 -->
+	<test
+		name="Verify agent cannot complete dial when do not select completion code"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="verifyCompleteDial" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC10 -->
+	<test
+		name="Verify Workspace can dial again and select phone attribute"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="verifyDialFreeForm" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC11 -->
+	<test name="Verify Agent script url show with the callback"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="agentScriptWithCallback" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC12 -->
+	<test name="Verify User can input text to agent script url"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="verifyUseCanInputToAgentScript" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC13 -->
+	<test
+		name="Verify Agent script url can be shown on tab have 6 widget Outbound agent script"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="agentScriptDisplayWith6Widget" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC14 -->
+	<test name="Verify Agent script url can be shown on tab Custom"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="agentScriptDisplayWithTab" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC15 -->
+	<test
+		name="Verify Agent script url is shown all tab which have widget agent script"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="agentScriptDisplayWithTab" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC16 -->
+	<test
+		name="Login and check outbound call with all browser supported by WS"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="previewCallWithSupportedBrowsers" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!--Sprint 139 -->
+	<!-- TC1 -->
+	<test
+		name="Verify Agent will receive one call in every from 5 to 20 seconds"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="receiveContactWithinCertainTime" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC2 -->
+	<test
+		name="The timer will not reset every time the agent changes to Ready multiple times"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="timeWillReset" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC3 -->
+	<test
+		name="Verify that option select organization should not display when user add Rule Editor"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="removeOrganizationFromCCaaS" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC4 -->
+	<test name="Verify Help button can display in POM menu"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="helpButtonDisplayPOMMenu" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC5 -->
+	<test
+		name="Verify Edit icon link doesnot display in campaign manage page"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="editCampIconNotDisplay" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC6 -->
+	<test
+		name="Verify when user click Home button then POM home page displayed"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="clickHomeButtonGoToHome" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC7 -->
+	<test name="Verify Help button removed in Scheduled report page"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="scheduleReportNotDisplayCCaaS" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC8 -->
+	<test name="Verify Help button removed in custom report page"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="customReportNotDisplayCCaaS" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC9 -->
+	<test name="Verify Help button removed in standard report page"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.UWFWorkSpacesAgent_Test">
+				<methods>
+					<include name="helpButtonRemovedInStandardReport" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC10 -->
+	<!-- New scripts -->
+	<test
+		name="Verify that help button has been removed on all POM page"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.POMCCaaS_Test">
+				<methods>
+					<include name="helpButtonRemovedInAllPage" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC11 -->
+	<test
+		name="Verify that Sample strategy available after POM cloud upgrade"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.POMCCaaS_Test">
+				<methods>
+					<include name="sampleStrategyAvailable" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC12 -->
+	<test
+		name="Verify that user can edit senders address with save as campaign when campaign paused"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.POMCCaaS_Test">
+				<methods>
+					<include name="saveAsCampEditSenderAddressCampaignPaused" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC13 -->
+	<test
+		name="Verify when save as campaign then user can edit Sender Address and save campaign successful with POM Ccaas mode"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.POMCCaaS_Test">
+				<methods>
+					<include name="saveAsCampEditSenderAddress" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC14 -->
+	<test
+		name="Verify when enter special character in the senders address field then user can save campaign successful with POM Ccelite mode"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.POMCCaaS_Test">
+				<methods>
+					<include name="editSenderAddressCampaignSpecialCharacter" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC15 -->
+	<test
+		name="Verify when senders address is empty then user can save campaign successful with POM Ccelite mode"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.POMCCaaS_Test">
+				<methods>
+					<include name="emptySenderAddress" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC16 -->
+	<test
+		name="Verify that user can edit sender address successfully when run campaign linking and try to be paused campaign and edit sender address"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.POMCCaaS_Test">
+				<methods>
+					<include name="editSenderAddressCampaignLinkingPaused" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC17 -->
+	<test
+		name="Verify that user can edit senders address when campaign paused"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.POMCCaaS_Test">
+				<methods>
+					<include name="editSenderAddressCampaignPaused" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC18 -->
+	<test
+		name="Verify when edit campaign then user can edit senders address and save campaign successful with POM Ccaas mode"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.POMCCaaS_Test">
+				<methods>
+					<include name="editSenderAddress" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC19 -->
+	<test
+		name="Verify that user can save campaign successful when enter correct senders address information with E164 2 format with POM Ccaas mode"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.POMCCaaS_Test">
+				<methods>
+					<include name="editSenderAddressE164" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- TC20 -->
+	<test
+		name="Verify when enter special character in the senders address field then user cannot save campaign with message Invalid senders address only E164 format allow with POM Ccaas mode"
+		preserve-order="true">
+		<parameter name="dataFile" value="WorkspaceCCaaS.xlsx" />
+		<parameter name="dataSheet" value="Agent" />
+		<classes>
+			<class name="com.scripts.POMCCaaS_Test">
+				<methods>
+					<include name="editSenderAddressInvalid" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
