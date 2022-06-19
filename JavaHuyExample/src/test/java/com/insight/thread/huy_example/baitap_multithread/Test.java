@@ -23,6 +23,6 @@ public class Test {
         System.out.println("\nPRINT THREAD 2");
         thread2.list.forEach(System.out::print);
 
-        System.out.println("END MAIN");
+        System.out.println("\nEND MAIN");
     }
 }
