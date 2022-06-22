@@ -1,4 +1,4 @@
-package com.training.testng.dataprovider.lib;
+package com.lib;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
