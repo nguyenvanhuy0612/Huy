@@ -14,13 +14,8 @@ public class Account {
     public synchronized void withdraw(int amount) {
         print("going to withdraw...");
         print("current amount = " + this.amount);
-        while (this.amount < amount) {
+        if (this.amount < amount) {
             print("Less balance, wait for deposit ...");
-            /*try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }*/
             try {
                 wait();
             } catch (InterruptedException e) {
