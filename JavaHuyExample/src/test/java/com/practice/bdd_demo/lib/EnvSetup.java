@@ -1,4 +1,4 @@
-package com.bdd_demo.lib;
+package com.practice.bdd_demo.lib;
 
 import org.openqa.selenium.WebDriver;
 

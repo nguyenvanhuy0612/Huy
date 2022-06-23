@@ -1,6 +1,5 @@
-package com.bdd_demo.lib;
+package com.practice.bdd_demo.lib;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
