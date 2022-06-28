@@ -10,8 +10,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(features = {"src/test/java/com/practice/bdd_junit_demo/resources/features"},
         glue = {"com.practice.bdd_junit_demo.steps"},
         monochrome = true,
-        tags = "",
-        plugin = { "pretty", "html:target/cucumber-reports.html" }
+        tags = "not @ignored",
+        plugin = {"pretty", "html:target/cucumber-reports.html"}
 )
 public class TestRunner {
 
@@ -20,9 +20,9 @@ public class TestRunner {
         System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
-//    @BeforeClass
-//    public void junitBeforeClass() {
-//        System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
-//    }
+    @BeforeClass
+    public static void junitBeforeClass() {
+        System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
+    }
 
 }
