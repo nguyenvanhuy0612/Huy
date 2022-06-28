@@ -1,11 +1,24 @@
 package com.practice.bdd_junit_demo.steps;
 
 import com.practice.bdd_junit_demo.lib.EnvSetup;
+import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.time.LocalDate;
+
 public class TestStepsDefs {
+
+    @ParameterType("([0-9]{4})-([0-9]{2})-([0-9]{2})")
+    public LocalDate iso8601Date(String year, String month, String day) {
+        return LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+    }
+
+    @Given("today is {iso8601Date}")
+    public void today_is(LocalDate date) {
+
+    }
 
     @Given("Go to url")
     public void go_to_url() {
