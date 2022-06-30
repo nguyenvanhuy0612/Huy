@@ -1,4 +1,4 @@
-package com.practice.bdd_demo.lib;
+package com.practice.bdd_testng_demo.lib;
 
 import java.util.Collections;
 import java.util.HashMap;
