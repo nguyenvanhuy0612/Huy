@@ -3,7 +3,6 @@ package com.practice.bdd_junit_demo.runner;
 import com.practice.bdd_junit_demo.lib.EnvSetup;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
@@ -17,17 +16,13 @@ import org.junit.runner.RunWith;
 )
 public class TestRunner {
 
-    @Before
-    public void junitBefore() {
-        EnvSetup.environment_version = 2;
-        System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
-        System.out.println("EnvSetup.environment_version = " + EnvSetup.environment_version);
-    }
-
     @BeforeClass
     public static void junitBeforeClass() {
+        System.out.println("========================================================================================");
+        // Before Suite alternative
         EnvSetup.environment_version = 22;
         System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
         System.out.println("EnvSetup.environment_version = " + EnvSetup.environment_version);
+        System.out.println("========================================================================================");
     }
 }
