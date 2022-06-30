@@ -11,7 +11,7 @@ public class CommonFunc {
 
     public static List<HashMap<String, String>> readExcelFile(String fileNamePath, String sheetName) {
         List<HashMap<String, String>> excelData = new ArrayList<>();
-        // code
+        // code to read excel file
         return excelData;
     }
 
