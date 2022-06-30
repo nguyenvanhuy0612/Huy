@@ -1,6 +1,5 @@
 package com.practice.bdd_junit_demo.steps;
 
-import io.cucumber.core.gherkin.Feature;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.BeforeStep;
@@ -13,6 +12,7 @@ public class Hooks {
         System.out.println("========================================================================================");
         System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
         // Init log
+        // Init env
         System.out.println("========================================================================================");
     }
 
@@ -21,7 +21,9 @@ public class Hooks {
         System.out.println("========================================================================================");
         System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
         System.out.println("before method with scenario: " + scenario.getName());
-        //Init webdriver
+        System.out.println("before method with scenario line: " + scenario.getLine());
+        // Init webdriver
+        // login EP
         System.out.println("========================================================================================");
     }
 
