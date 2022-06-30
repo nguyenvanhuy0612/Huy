@@ -1,5 +1,8 @@
 package com.practice.bdd_junit_demo.lib;
 
+import com.google.gson.JsonObject;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +15,14 @@ public class CommonFunc {
         return excelData;
     }
 
-    public static void initChromeDriver() {
-
+    public static String getFromJson(JsonObject jsonObject, String key) {
+        String value = "";
+        return value;
     }
+
+    public static void initChromeDriver() {
+        EnvSetup.driver = new ChromeDriver();
+    }
+
+
 }
