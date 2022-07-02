@@ -7,6 +7,18 @@ import java.util.Properties;
 public class Example {
 
     public static void main(String[] args) {
+        InputStream inputStream = Example.class.getClassLoader().getResourceAsStream("user.json");
+        JsonUtility.writeJsonToFile(System.getProperty("user.dir") + "/src/test/resources/user.json");
+    }
+
+    public static void main2(String[] args) {
+        XMLUtility utility = new XMLUtility();
+        String file = System.getProperty("user.dir") + "/src/test/resources/staff.xml";
+        XMLUtility.readXMLFile(file);
+    }
+
+
+    public static void main1(String[] args) {
         try (InputStream input = Example.class.getClassLoader().getResourceAsStream("config.properties")) {
 
             Properties prop = new Properties();
