@@ -12,4 +12,20 @@ public class Utility {
     {
         Utility.throwException(exception, null);
     }
+
+    public static void wait(int sec) {
+        try {
+            Thread.sleep(sec * 1000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void wait(double sec) {
+        try {
+            Thread.sleep((long) (sec * 1000));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -1,4 +1,4 @@
-package com.insight.handlerandompopup;
+package com.insight.handle_randompopup;
 
 public class Common {
 

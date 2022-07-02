@@ -1,4 +1,4 @@
-package com.insight.handlerandompopup;
+package com.insight.handle_randompopup;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

@@ -1,25 +1,24 @@
-package com.insight.handlerandompopup;
+package com.insight.handle_randompopup;
 
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-public class ElementProxy implements InvocationHandler {
+public class WebDriverProxy implements InvocationHandler {
 
-    private final WebElement element;
+    private final WebDriver driver;
 
-    public ElementProxy(WebElement element) {
-        this.element = element;
+    public WebDriverProxy(WebDriver driver) {
+        this.driver = driver;
     }
-
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         //before invoking actual method check for the popup
         this.checkForPopupAndKill();
         //at this point, popup would have been closed if it had appeared. element action can be called safely now.
-        Object result = method.invoke(element, args);
+        Object result = method.invoke(driver, args);
         return result;
     }
 
@@ -27,5 +26,3 @@ public class ElementProxy implements InvocationHandler {
         Common.sleep(10);
     }
 }
-
-

@@ -1,4 +1,4 @@
-package com.insight.handlerandompopup;
+package com.insight.handle_randompopup;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
