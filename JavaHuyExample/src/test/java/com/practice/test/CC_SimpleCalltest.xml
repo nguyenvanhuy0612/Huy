@@ -1,0 +1,17 @@
+a9a9cbcb7171d4d4fbfb2c2c1b1b3939b0b6f6f9b9b7a7a35353a3afcfcc4c4#<?xml version="1.0"?>
+<tns:AvayaPIMContactStrategy xmlns:tns="http://www.avaya.com/ContactStrategy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.avaya.com/ContactStrategy ContactStrategy.xsd ">
+  <Handler foundError="false" state="initial">
+    <action AMDAction="0" CallPacingType="None" DriverApp="CC/PomDriverApp" EnhancedCCA="ON" OnMediaServerFailure="retry" SilentCallDetection="OFF" allocationType="0" foundError="false" guardTime="Disable" priority="5" type="call">
+      <address foundError="false" isBranch="false">
+        <ContactAttribute>phoneNumber1</ContactAttribute>
+      </address>
+      <resultprocessors foundError="false" nextState="done">
+        <result foundError="false" nextState="done" value="Answer_Human">
+          <Application foundError="false">
+            <url foundError="false">http://148.147.168.136/mpp/misc/PIM/liveVoice_10sec.vxml</url>
+          </Application>
+        </result>
+      </resultprocessors>
+    </action>
+  </Handler>
+</tns:AvayaPIMContactStrategy>

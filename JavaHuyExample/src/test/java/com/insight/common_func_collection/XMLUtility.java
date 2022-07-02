@@ -1,5 +1,9 @@
 package com.insight.common_func_collection;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import org.json.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -18,6 +22,19 @@ import java.io.IOException;
 
 public class XMLUtility {
 
+    public static JsonElement xmlToJson(String content) {
+        try {
+            JSONObject json = XML.toJSONObject(content);
+            String jsonString = json.toString(4);
+            System.out.println(jsonString);
+            return JsonParser.parseString(json.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
     public static String getXMLNodeValue(String sXMLFileName, String sXMLNodeExpression) {
         String sNodeValue = null;
         try {
@@ -30,6 +47,27 @@ public class XMLUtility {
             e.printStackTrace();
         }
         return sNodeValue;
+    }
+
+    public static Document readXMLString(String content) {
+        try {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            // optional, but recommended
+            // process XML securely, avoid attacks like XML External Entities (XXE)
+            dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+
+            // parse XML file
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(content);
+
+            // optional, but recommended
+            // http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+            doc.getDocumentElement().normalize();
+            return doc;
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static Document readXMLFile(String fileNamePath) {

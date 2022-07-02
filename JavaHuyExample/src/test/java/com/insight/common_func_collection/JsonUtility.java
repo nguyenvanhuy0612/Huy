@@ -9,8 +9,33 @@ import com.google.gson.stream.JsonWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class JsonUtility {
+
+    public static void findJsonElement(JsonElement jsonElement, String key, List<JsonElement> result) {
+        if (jsonElement.isJsonArray()) {
+            for (JsonElement jsonElement1 : jsonElement.getAsJsonArray()) {
+                findJsonElement(jsonElement1, key, result);
+            }
+        } else if (jsonElement.isJsonObject()) {
+            Set<Map.Entry<String, JsonElement>> entrySet = jsonElement.getAsJsonObject().entrySet();
+            for (Map.Entry<String, JsonElement> entry : entrySet) {
+                String key1 = entry.getKey();
+                if (key1.equals(key)) {
+                    result.add(entry.getValue());
+                }
+                findJsonElement(entry.getValue(), key, result);
+            }
+        } else {
+            if (jsonElement.toString().equals(key)) {
+                result.add(jsonElement);
+            }
+        }
+    }
+
 
     public static JsonElement stringToJson(String jsonData) {
         return JsonParser.parseString(jsonData);

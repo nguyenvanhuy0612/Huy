@@ -13,7 +13,18 @@ import java.util.stream.Stream;
 
 public class FileUtility {
 
-    public static List<String> readCSVFileToList(String fileNamePath) {
+    public static String readFileAsString(String fileNamePath) {
+        // List to String with newline symbol
+        StringBuilder sb = new StringBuilder();
+        try {
+            readFileToList(fileNamePath).forEach(s -> sb.append(s).append("\n"));
+            //        System.out.println("sb: " + sb);
+        } catch (Exception e) {
+        }
+        return sb.toString();
+    }
+
+    public static List<String> readFileToList(String fileNamePath) {
         // Read File to list
         List<String> result;
         try (Stream<String> lines = Files.lines(Paths.get(fileNamePath))) {
