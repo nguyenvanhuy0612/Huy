@@ -23,8 +23,7 @@ public class JsonUtility {
         } else if (jsonElement.isJsonObject()) {
             Set<Map.Entry<String, JsonElement>> entrySet = jsonElement.getAsJsonObject().entrySet();
             for (Map.Entry<String, JsonElement> entry : entrySet) {
-                String key1 = entry.getKey();
-                if (key1.equals(key)) {
+                if (entry.getKey().equals(key)) {
                     result.add(entry.getValue());
                 }
                 findJsonElement(entry.getValue(), key, result);
