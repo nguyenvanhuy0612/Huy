@@ -2,33 +2,27 @@ package com.insight.common_func_collection;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class JsonUtility {
 
-    public static void stringToJson(String jsonData) {
-        String json = "{ \"name\": \"Baeldung\", \"java\": true }";
-        JsonElement jsonObject = JsonParser.parseString(json);
+    public static JsonElement stringToJson(String jsonData) {
+        return JsonParser.parseString(jsonData);
     }
 
     public static void parseJson(Object obj, String fileNamePath) {
         Gson gson = new Gson();
-
         try {
-
             // 1. Java object to JSON file
             gson.toJson(obj, new FileWriter(fileNamePath));
             // 2. Java object to JSON string
             String json = gson.toJson(obj);
-
         } catch (IOException e) {
             e.printStackTrace();
         }

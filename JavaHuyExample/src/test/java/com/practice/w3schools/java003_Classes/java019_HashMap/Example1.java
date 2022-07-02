@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Example1 {
 	public static void main(String[] args) {
 		// Create a HashMap object called capitalCities
-		HashMap<String, String> capitalCities = new HashMap<String, String>();
+		HashMap<String, String> capitalCities = new HashMap<>();
 
 		// Add keys and values (Country, City)
 		capitalCities.put("England", "London");

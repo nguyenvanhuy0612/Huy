@@ -14,7 +14,7 @@ public class Example {
     public static void main2(String[] args) {
         XMLUtility utility = new XMLUtility();
         String file = System.getProperty("user.dir") + "/src/test/resources/staff.xml";
-        XMLUtility.readXMLFile(file);
+        XMLUtility.readXMLFile_Test(file);
     }
 
 

@@ -10,12 +10,50 @@ import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
 import java.io.File;
 import java.io.IOException;
 
 public class XMLUtility {
 
-    public static void readXMLFile(String fileNamePath) {
+    public static String getXMLNodeValue(String sXMLFileName, String sXMLNodeExpression) {
+        String sNodeValue = null;
+        try {
+            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document document = builder.parse(new File(sXMLFileName));
+            XPath xpath = XPathFactory.newInstance().newXPath();
+            Node xmlNode = (Node) xpath.evaluate(sXMLNodeExpression, document, XPathConstants.NODE);
+            sNodeValue = xmlNode.getTextContent();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sNodeValue;
+    }
+
+    public static Document readXMLFile(String fileNamePath) {
+        try {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            // optional, but recommended
+            // process XML securely, avoid attacks like XML External Entities (XXE)
+            dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+
+            // parse XML file
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(new File(fileNamePath));
+
+            // optional, but recommended
+            // http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+            doc.getDocumentElement().normalize();
+            return doc;
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static void readXMLFile_Test(String fileNamePath) {
         // This method is example only
 
         // Instantiate the Factory
