@@ -32,9 +32,7 @@ public class ExcelUtility {
             while (itr.hasNext()) {
                 Row row = itr.next();
                 List<String> curRowList = new ArrayList<>();
-                row.cellIterator().forEachRemaining(cell -> {
-                    curRowList.add(cell.toString());
-                });
+                row.cellIterator().forEachRemaining(cell -> curRowList.add(cell.toString()));
                 if (row.getRowNum() == 0) {
                     // header
                     headerList.addAll(curRowList);
