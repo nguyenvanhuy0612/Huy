@@ -4,7 +4,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.insight.common_func_collection.EnvSetup;
 import com.insight.common_func_collection.FileUtility;
+import com.insight.common_func_collection.JsonUtility;
 import com.insight.common_func_collection.XMLUtility;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class XML_Test_Strategy {
 
@@ -14,7 +18,11 @@ public class XML_Test_Strategy {
         fileContent = fileContent.substring(fileContent.indexOf("<?"), fileContent.length() - 1);
 
         JsonElement jsonElement = XMLUtility.xmlToJson(fileContent);
-        JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+        List<JsonElement> handler = new ArrayList<>();
+        JsonUtility.findJsonElement(jsonElement, "Handler", handler);
+
+        //JsonObject jsonObject = jsonElement.getAsJsonObject();
 
         System.out.println();
     }

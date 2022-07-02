@@ -25,8 +25,8 @@ public class XMLUtility {
     public static JsonElement xmlToJson(String content) {
         try {
             JSONObject json = XML.toJSONObject(content);
-            String jsonString = json.toString(4);
-            System.out.println(jsonString);
+            //String jsonString = json.toString(4);
+            //System.out.println(jsonString);
             return JsonParser.parseString(json.toString());
         } catch (Exception e) {
             e.printStackTrace();
