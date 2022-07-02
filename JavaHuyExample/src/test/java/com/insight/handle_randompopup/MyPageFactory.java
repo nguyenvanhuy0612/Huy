@@ -8,7 +8,7 @@ import java.lang.reflect.Field;
 
 public class MyPageFactory {
 
-    public static <T> T initElements(WebDriver driver, Class<T> pageObject){
+    public static <T> T initElements(WebDriver driver, Class<T> pageObject) {
 
         //first init elements
         T page = PageFactory.initElements(driver, pageObject);
@@ -20,7 +20,7 @@ public class MyPageFactory {
                     field.setAccessible(true);
                     //reset the webElement with proxy object
                     field.set(page, ElementGuard.guard((WebElement) field.get(page)));
-                }catch (IllegalAccessException var10){
+                } catch (IllegalAccessException var10) {
                     throw new RuntimeException(var10);
                 }
             }

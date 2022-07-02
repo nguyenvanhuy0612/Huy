@@ -35,7 +35,6 @@ public class TestGoogleSearch {
     }
 
 
-
     @AfterMethod
     public void tearDown() {
         if (driver != null)
