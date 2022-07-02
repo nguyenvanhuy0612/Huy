@@ -13,9 +13,9 @@ public class Utility {
             prop.load(input);
 
             // get the property value and print it out
-            System.out.println(prop.getProperty("db.url"));
-            System.out.println(prop.getProperty("db.user"));
-            System.out.println(prop.getProperty("db.password"));
+//            System.out.println(prop.getProperty("db.url"));
+//            System.out.println(prop.getProperty("db.user"));
+//            System.out.println(prop.getProperty("db.password"));
 
             return prop;
         } catch (IOException ex) {
@@ -29,9 +29,9 @@ public class Utility {
             Properties prop = new Properties();
 
             // set the properties value
-            prop.setProperty("db.url", "localhost");
-            prop.setProperty("db.user", "mkyong");
-            prop.setProperty("db.password", "password");
+//            prop.setProperty("db.url", "localhost");
+//            prop.setProperty("db.user", "mkyong");
+//            prop.setProperty("db.password", "password");
             prop.setProperty(key, value);
 
             // save properties to project root folder
