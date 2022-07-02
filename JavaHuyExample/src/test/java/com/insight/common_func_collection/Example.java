@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class Example {
 
-    public static void main(String[] args) {
+    public static void main3(String[] args) {
         InputStream inputStream = Example.class.getClassLoader().getResourceAsStream("user.json");
         JsonUtility.writeJsonToFile(System.getProperty("user.dir") + "/src/test/resources/user.json");
     }
