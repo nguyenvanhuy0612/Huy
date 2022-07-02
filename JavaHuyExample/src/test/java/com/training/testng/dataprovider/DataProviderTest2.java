@@ -1,6 +1,6 @@
 package com.training.testng.dataprovider;
 
-import com.lib.UtilityFun;
+import com.lib_example.UtilityFun;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;

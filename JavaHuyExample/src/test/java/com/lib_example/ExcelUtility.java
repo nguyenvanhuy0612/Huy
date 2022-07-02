@@ -1,4 +1,4 @@
-package com.lib;
+package com.lib_example;
 
 
 import java.io.FileInputStream;
