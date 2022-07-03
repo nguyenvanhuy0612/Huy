@@ -56,13 +56,16 @@ public class XML_Test_Strategy {
         System.out.println(key + " - " + value);
     }
 
-    public static String convertData(String name) {
-        if (name.equals("action")) {
+    public static String mapKey(String key) {
+        if (key.equals("action"))
             return "call";
-        } else if (name.equals("#document")) {
-            return "campaignstrategy";
-        }
-        return name;
+        return key;
+    }
+
+    public static String mapValue(String value) {
+        if (value.equals("action"))
+            return "call";
+        return value;
     }
 
     public static void main(String[] args) {
