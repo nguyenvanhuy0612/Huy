@@ -23,8 +23,15 @@ public class XML_Test_Strategy {
                 .filter(entry -> entry.getValue().isJsonObject())
                 .collect(Collectors.toMap(Map.Entry::getKey, entry -> entry.getValue().getAsJsonObject()));
 
-        System.out.println(propertiesMap);
-        System.out.println(jsonObjectMap);
+        System.out.println("propertiesMap: " + propertiesMap);
+        System.out.println("jsonObjectMap: " + jsonObjectMap);
+
+        propertiesMap.forEach(XML_Test_Strategy::processPrimitive);
+        jsonObjectMap.forEach((key, jsonObject1) -> {
+            // Click to key s
+            System.out.println("Click to key: " + key);
+            processObject(jsonObject1);
+        });
 
 
 //        for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
