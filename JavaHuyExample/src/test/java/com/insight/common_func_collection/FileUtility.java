@@ -16,11 +16,8 @@ public class FileUtility {
     public static String readFileAsString(String fileNamePath) {
         // List to String with newline symbol
         StringBuilder sb = new StringBuilder();
-        try {
-            readFileToList(fileNamePath).forEach(s -> sb.append(s).append("\n"));
-            //        System.out.println("sb: " + sb);
-        } catch (Exception e) {
-        }
+        readFileToList(fileNamePath).forEach(s -> sb.append(s).append("\n"));
+        //        System.out.println("sb: " + sb);
         return sb.toString();
     }
 
@@ -32,7 +29,7 @@ public class FileUtility {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("result: " + result);
+        //System.out.println("result: " + result);
         return result;
         // List to String with newline symbol
         //        StringBuilder sb = new StringBuilder();
