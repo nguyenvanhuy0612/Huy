@@ -22,7 +22,7 @@ import java.io.IOException;
 
 public class XMLUtility {
 
-    public static JsonElement xmlToJson(String content) {
+    public static JsonElement xmlStringToJson(String content) {
         try {
             JSONObject json = XML.toJSONObject(content);
             //String jsonString = json.toString(4);

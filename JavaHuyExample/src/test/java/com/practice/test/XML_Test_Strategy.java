@@ -6,7 +6,6 @@ import com.insight.common_func_collection.EnvSetup;
 import com.insight.common_func_collection.FileUtility;
 import com.insight.common_func_collection.JsonUtility;
 import com.insight.common_func_collection.XMLUtility;
-import org.openqa.selenium.json.Json;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,23 +70,23 @@ public class XML_Test_Strategy {
         String fileContent = FileUtility.readFileAsString(file);
         fileContent = fileContent.substring(fileContent.indexOf("<?"), fileContent.length() - 1);
 
-        JsonElement jsonElement = XMLUtility.xmlToJson(fileContent);
+        JsonElement jsonElement = XMLUtility.xmlStringToJson(fileContent);
 
         List<JsonElement> handlers = new ArrayList<>();
         JsonUtility.findJsonElement(jsonElement, "Handler", handlers);
 
-        JsonObject jsonObjectHandler = handlers.get(0).getAsJsonObject();
+//        JsonObject jsonObjectHandler = handlers.get(0).getAsJsonObject();
 
-        jsonObjectHandler.entrySet().forEach(entry -> {
-            if (entry.getValue().isJsonObject()) {
-                System.out.println("process obj");
-            } else if (entry.getValue().isJsonArray()) {
-                System.out.println("process array");
-            } else if (entry.getValue().isJsonPrimitive()) {
-                System.out.print("process primitive: ");
-                System.out.println(entry.getKey() + " - " + entry.getValue().getAsString());
-            }
-        });
+//        jsonObjectHandler.entrySet().forEach(entry -> {
+//            if (entry.getValue().isJsonObject()) {
+//                System.out.println("process obj");
+//            } else if (entry.getValue().isJsonArray()) {
+//                System.out.println("process array");
+//            } else if (entry.getValue().isJsonPrimitive()) {
+//                System.out.print("process primitive: ");
+//                System.out.println(entry.getKey() + " - " + entry.getValue().getAsString());
+//            }
+//        });
 
 
         for (int i = 0; i < handlers.size(); i++) {
