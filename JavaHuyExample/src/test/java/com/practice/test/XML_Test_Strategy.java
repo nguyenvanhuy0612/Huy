@@ -28,6 +28,7 @@ public class XML_Test_Strategy {
         propertiesMap.forEach(XML_Test_Strategy::processPrimitive);
         jsonObjectMap.forEach((key, jsonObject1) -> {
             // Click to key s
+            key = mapKey(key);
             System.out.println("Click to key: " + key);
             processObject(jsonObject1);
         });
@@ -53,9 +54,12 @@ public class XML_Test_Strategy {
 
     public static void processPrimitive(String key, String value) {
         // set
+        key = mapKey(key);
+        value = mapKey(value);
         System.out.println(key + " - " + value);
     }
 
+    // Lib data convert
     public static String mapKey(String key) {
         if (key.equals("action"))
             return "call";
