@@ -1,4 +1,4 @@
-package com.demo.scripts;
+package com.demo_log4j.scripts;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,6 +10,18 @@ public class Log4J2_Test {
     //private static final Logger logger = LogManager.getLogger(Log4J2_Test.class.getName());
 
     public static void main(String[] args) {
+        String configPath = System.getProperty("user.dir") + "/src/test/java/com/demo_log4j/data/config/log4j2_config3.properties";
+        File configPathFile = new File(configPath);
+        System.out.println("configPath: " + configPath);
+        System.setProperty("log4j2.configurationFile", configPathFile.toURI().toString());
+        System.setProperty("log4j2.debug", "true");
+
+        Logger log = LogManager.getLogger(Log4J2_Test.class.getName());
+        log.info("Log info test");
+        log.debug("Log debug test");
+    }
+
+    public static void main1(String[] args) {
         String configPath = System.getProperty("user.dir") + "/src/test/java/com/demo/data/config/log4j2_2.properties";
 
 //        String configPath2 = "com/demo/data/config/log4j2.xml";

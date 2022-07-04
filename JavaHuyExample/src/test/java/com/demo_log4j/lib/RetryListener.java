@@ -1,4 +1,4 @@
-package com.demo.lib;
+package com.demo_log4j.lib;
 
 import org.testng.IAnnotationTransformer;
 

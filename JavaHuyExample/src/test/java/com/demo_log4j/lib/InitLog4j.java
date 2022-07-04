@@ -1,9 +1,8 @@
-package com.demo.lib;
+package com.demo_log4j.lib;
 
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.testng.annotations.Test;
 
 public class InitLog4j {
 
