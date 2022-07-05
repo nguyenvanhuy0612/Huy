@@ -16,6 +16,28 @@ public class Hooks {
         System.out.println("========================================================================================");
     }
 
+    @Before("@test2")
+    public void before2(Scenario scenario) {
+        System.out.println("========================================================================================");
+        System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
+        System.out.println("before method with scenario: " + scenario.getName());
+        System.out.println("before method with scenario line: " + scenario.getLine());
+        // Init webdriver
+        // login EP
+        System.out.println("========================================================================================");
+    }
+
+    @Before("@test")
+    public void before3(Scenario scenario) {
+        System.out.println("========================================================================================");
+        System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
+        System.out.println("before method with scenario: " + scenario.getName());
+        System.out.println("before method with scenario line: " + scenario.getLine());
+        // Init webdriver
+        // login EP
+        System.out.println("========================================================================================");
+    }
+
     @Before
     public void before(Scenario scenario) {
         System.out.println("========================================================================================");
