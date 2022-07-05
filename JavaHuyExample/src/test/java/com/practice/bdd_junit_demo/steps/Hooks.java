@@ -27,7 +27,7 @@ public class Hooks {
         System.out.println("========================================================================================");
     }
 
-    @Before("@test")
+    @Before("@test or @test1")
     public void before3(Scenario scenario) {
         System.out.println("========================================================================================");
         System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());

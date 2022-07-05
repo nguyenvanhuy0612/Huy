@@ -1,5 +1,5 @@
 Feature: Practice
 
-  @test
+  @test1
   Scenario: Test scenario
     Given test
