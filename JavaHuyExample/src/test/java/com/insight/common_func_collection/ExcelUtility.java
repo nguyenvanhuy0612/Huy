@@ -17,7 +17,7 @@ public class ExcelUtility {
         try {
             File file = new File(sExcelFileNamePath);
             FileInputStream fis = new FileInputStream(file);
-            Workbook wb = WorkbookFactory.create(fis);
+            Workbook wb = WorkbookFactory.create(new File(sExcelFileNamePath));
             for (int i = 0; i < wb.getNumberOfSheets(); i++) {
                 // sheet
                 List<HashMap<String, String>> curSheetData = new ArrayList<>();
