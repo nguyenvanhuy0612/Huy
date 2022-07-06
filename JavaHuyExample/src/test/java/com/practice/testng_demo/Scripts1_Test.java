@@ -4,8 +4,10 @@ import com.demo_log4j.lib.InitLog4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners({Listener.class})
 public class Scripts1_Test {
     public static Logger log = LogManager.getLogger(Scripts1_Test.class);
 
