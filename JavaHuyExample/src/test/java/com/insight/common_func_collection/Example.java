@@ -2,9 +2,17 @@ package com.insight.common_func_collection;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 
 public class Example {
+
+    public static void main(String[] args) {
+        String fileNamePath = System.getProperty("user.dir") + "/src/test/java/com/data/WorkspaceCCaaS.xlsx";
+        HashMap<String, List<HashMap<String, String>>> results = ExcelUtility.readExcelFile(fileNamePath);
+        System.out.println(results);
+    }
 
     public static void main3(String[] args) {
         InputStream inputStream = Example.class.getClassLoader().getResourceAsStream("user.json");
@@ -16,7 +24,6 @@ public class Example {
         String file = System.getProperty("user.dir") + "/src/test/resources/staff.xml";
         XMLUtility.readXMLFile_Test(file);
     }
-
 
     public static void main1(String[] args) {
         try (InputStream input = Example.class.getClassLoader().getResourceAsStream("config.properties")) {
