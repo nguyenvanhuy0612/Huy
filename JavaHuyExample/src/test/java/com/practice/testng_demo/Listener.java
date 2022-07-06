@@ -3,20 +3,17 @@ package com.practice.testng_demo;
 import java.util.List;
 import java.util.Map;
 
-import com.demo_log4j.lib.UtilityFun;
 import org.testng.*;
 import org.testng.xml.XmlSuite;
 
 public class Listener implements ISuiteListener, ITestListener, IReporter {
     private static final ThreadLocal<ISuite> ACCESS = new ThreadLocal<>();
 
-    private final UtilityFun utilityFunc = new UtilityFun();
-
     public Listener() {
     }
 
     public static ISuite getAccess() {
-        System.out.println(com.demo_log4j.lib.Listener.class.getName() + " getAccess()");
+        System.out.println(Listener.class.getName() + " getAccess()");
         return ACCESS.get();
     }
 
