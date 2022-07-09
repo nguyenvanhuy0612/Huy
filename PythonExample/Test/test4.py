@@ -22,7 +22,7 @@ for group in groups:
     header = group.find(name='div', class_="group-name", recursive=False)
     #save_file(header.h3.string, "data.csv")
     print(str(header.string))
-    save_file("\t" + str(header.string), data_file)
+    save_file("\t" + str(header.string).replace(" ", ""), data_file)
     rows = group.find_all(name='div', class_="table-row", recursive=False)
     for row in rows:
         rData1 = row.find(name='div', class_="tb-col-1", recursive=False).string
