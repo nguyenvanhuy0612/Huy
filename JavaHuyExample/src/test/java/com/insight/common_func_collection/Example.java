@@ -12,6 +12,9 @@ public class Example {
         String fileNamePath = System.getProperty("user.dir") + "/src/test/java/com/data/WorkspaceCCaaS.xlsx";
         HashMap<String, List<HashMap<String, String>>> results = ExcelUtility.readExcelFile(fileNamePath);
         System.out.println(results);
+
+        HashMap<String, String> resultMap = ExcelUtility.readExcelFile(fileNamePath,"Agent", "Verify agent cannot complete dial when do not select completion code");
+        System.out.println(resultMap);
     }
 
     public static void main3(String[] args) {
@@ -20,7 +23,7 @@ public class Example {
     }
 
     public static void main2(String[] args) {
-        XMLUtility utility = new XMLUtility();
+        //XMLUtility utility = new XMLUtility();
         String file = System.getProperty("user.dir") + "/src/test/resources/staff.xml";
         XMLUtility.readXMLFile_Test(file);
     }

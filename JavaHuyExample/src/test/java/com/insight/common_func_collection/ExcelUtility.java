@@ -135,28 +135,36 @@ public class ExcelUtility {
         HashMap<String, String> data = new HashMap<>();
         try {
             Workbook wb = WorkbookFactory.create(new File(sExcelFileNamePath));
+            DataFormatter dataFormatter = new DataFormatter();
+            FormulaEvaluator formulaEvaluator = wb.getCreationHelper().createFormulaEvaluator();
+            formulaEvaluator.evaluateAll();
+            // sheet
+            List<String> headerRowList = new ArrayList<>();
             Sheet sheet = wb.getSheet(sSheetName);
-            Iterator<Row> itr = sheet.iterator();
 
-            List<String> headerList = new ArrayList<>();
-            List<String> rowList = new ArrayList<>();
+            int firstRowNum = sheet.getFirstRowNum();
+            int lastRowNum = sheet.getLastRowNum();
+            Row headerRow = sheet.getRow(firstRowNum);
+            for (int j = headerRow.getFirstCellNum(); j <= headerRow.getLastCellNum(); j++) {
+                Cell hCell = headerRow.getCell(j);
+                String hCellValue = dataFormatter.formatCellValue(hCell, formulaEvaluator);
+                if (hCellValue.isEmpty())
+                    break;
+                headerRowList.add(hCellValue);
+            }
 
-            while (itr.hasNext()) {
-                Row row = itr.next();
-                List<String> curRowList = new ArrayList<>();
-                row.cellIterator().forEachRemaining(cell -> curRowList.add(cell.toString()));
-                if (row.getRowNum() == 0) {
-                    // header
-                    headerList.addAll(curRowList);
-                    continue;
-                }
-                if (curRowList.get(0).contentEquals(sTestCaseName)) {
-                    rowList.addAll(curRowList);
+            for (int j = firstRowNum + 1; j <= lastRowNum; j++) {
+                Row curRow = sheet.getRow(j);
+                short firstCellNum = curRow.getFirstCellNum();
+                short lastCellNum = curRow.getLastCellNum();
+                if (curRow.getCell(firstCellNum).toString().equalsIgnoreCase(sTestCaseName)) {
+                    for (int k = firstCellNum; k < headerRowList.size(); k++) {
+                        Cell rowCell = curRow.getCell(k);
+                        String cellValue = dataFormatter.formatCellValue(rowCell, formulaEvaluator);
+                        data.put(headerRowList.get(k - firstCellNum), cellValue);
+                    }
                     break;
                 }
-            }
-            for (int i = 0; i <= headerList.size(); i++) {
-                data.put(headerList.get(i), rowList.get(i));
             }
             System.out.println(data);
         } catch (Exception e) {
