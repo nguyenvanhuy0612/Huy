@@ -10,6 +10,7 @@ def test():
     driver = webdriver.Chrome()
     driver.maximize_window()
     driver.implicitly_wait(30)
+    driver.get("https://google.com")
     driver.find_element(By.XPATH, "//*[contains(text(), 'Username')]")
 
 
