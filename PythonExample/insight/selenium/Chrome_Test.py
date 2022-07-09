@@ -6,7 +6,5 @@ from webdriver_manager.chrome import ChromeDriverManager
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
 driver.get("https://google.com")
-
-time.sleep(5)
-
+time.sleep(2)
 driver.quit()
