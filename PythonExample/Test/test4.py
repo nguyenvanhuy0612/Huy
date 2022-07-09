@@ -11,8 +11,9 @@ list_data = soup.find(id='list_sale_price')
 
 
 def save_file(content, path):
-    with open(path, "a+") as f:
-        f.writelines(content + '\n')
+    content = (content + '\n').encode('utf-8')
+    with open(path, "ab+") as f:
+        f.write(content)
 
 
 groups = list_data.find_all(attrs={"class": "group-product"})
@@ -21,8 +22,13 @@ data_file = "datafile.tsv"
 for group in groups:
     header = group.find(name='div', class_="group-name", recursive=False)
     #save_file(header.h3.string, "data.csv")
-    print(str(header.string))
-    save_file("\t" + str(header.string).replace(" ", ""), data_file)
+    #print(str(header.string))
+    #save_file("\t" + str(header.string) + "\t" + "\t", data_file)
+    rHeader = str(header.string)
+    new_file = "data/" + rHeader.replace("/", "") + ".tsv"
+    if os.path.exists(new_file):
+        os.remove(new_file)
+    save_file("\t" + rHeader + "\t" + "\t", new_file)
     rows = group.find_all(name='div', class_="table-row", recursive=False)
     for row in rows:
         rData1 = row.find(name='div', class_="tb-col-1", recursive=False).string
@@ -34,5 +40,5 @@ for group in groups:
         rData3 = "" if rData3 is None else rData3
         rData4 = "" if rData4 is None else rData4
         rowData = rData1 + "\t"+ rData2 + "\t"+ rData3 + "\t"+ rData4
-        print(rowData)
-        save_file(rowData, data_file)
+        #print(rowData)
+        save_file(rowData, new_file)
