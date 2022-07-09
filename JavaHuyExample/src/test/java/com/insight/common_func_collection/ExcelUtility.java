@@ -13,11 +13,15 @@ import java.util.List;
 public class ExcelUtility {
 
     public static HashMap<String, List<HashMap<String, String>>> readExcelFile(String sExcelFileNamePath) {
+        System.out.println("Entering method " + Thread.currentThread().getStackTrace()[1].getMethodName());
         HashMap<String, List<HashMap<String, String>>> results = new HashMap<>();
         try {
             //File file = new File(sExcelFileNamePath);
             //FileInputStream fis = new FileInputStream(file);
             Workbook wb = WorkbookFactory.create(new File(sExcelFileNamePath));
+            DataFormatter dataFormatter = new DataFormatter();
+            FormulaEvaluator formulaEvaluator = wb.getCreationHelper().createFormulaEvaluator();
+            formulaEvaluator.evaluateAll();
             for (int i = 0; i < wb.getNumberOfSheets(); i++) {
                 // sheet
                 List<HashMap<String, String>> curSheetData = new ArrayList<>();
@@ -25,21 +29,33 @@ public class ExcelUtility {
 
                 Sheet sheet = wb.getSheetAt(i);
 
-                Row headerRow = sheet.getRow(sheet.getTopRow());
-                for (Cell hCell : headerRow) {
-                    if (hCell.toString().isEmpty())
+                int firstRowNum = sheet.getFirstRowNum();
+                int lastRowNum = sheet.getLastRowNum();
+                Row headerRow = sheet.getRow(firstRowNum);
+                for (int j = headerRow.getFirstCellNum(); j <= headerRow.getLastCellNum(); j++) {
+                    Cell hCell = headerRow.getCell(j);
+                    String hCellValue = dataFormatter.formatCellValue(hCell, formulaEvaluator);
+                    if (hCellValue.isEmpty())
                         break;
-                    headerRowList.add(hCell.toString());
+                    headerRowList.add(hCellValue);
                 }
 
-                for (int j = sheet.getTopRow() + 1; j < sheet.getLastRowNum(); j++) {
+                for (int j = firstRowNum + 1; j <= lastRowNum; j++) {
                     Row curRow = sheet.getRow(j);
-                    if (curRow.getCell(curRow.getFirstCellNum(), Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString().isEmpty()) {
+
+                    short firstCellNum = curRow.getFirstCellNum();
+                    short lastCellNum = curRow.getLastCellNum();
+
+                    if (curRow.getCell(firstCellNum, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString().isEmpty()) {
                         continue;
                     }
+
                     HashMap<String, String> curRowMap = new HashMap<>();
-                    for (int k = headerRow.getFirstCellNum(); k < headerRowList.size(); k++) {
-                        curRowMap.put(headerRowList.get(k), curRow.getCell(k, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString());
+                    for (int k = firstCellNum; k < headerRowList.size(); k++) {
+                        Cell rowCell = curRow.getCell(k);
+                        String cellValue = dataFormatter.formatCellValue(rowCell, formulaEvaluator);
+                        curRowMap.put(headerRowList.get(k - firstCellNum), cellValue);
+                        //curRowMap.put(headerRowList.get(k - firstCellNum), curRow.getCell(k, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString());
                     }
                     curSheetData.add(curRowMap);
                 }
@@ -139,7 +155,7 @@ public class ExcelUtility {
                     break;
                 }
             }
-            for (int i = 0; i < headerList.size(); i++) {
+            for (int i = 0; i <= headerList.size(); i++) {
                 data.put(headerList.get(i), rowList.get(i));
             }
             System.out.println(data);
