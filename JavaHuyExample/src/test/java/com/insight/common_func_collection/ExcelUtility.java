@@ -15,8 +15,8 @@ public class ExcelUtility {
     public static HashMap<String, List<HashMap<String, String>>> readExcelFile(String sExcelFileNamePath) {
         HashMap<String, List<HashMap<String, String>>> results = new HashMap<>();
         try {
-            File file = new File(sExcelFileNamePath);
-            FileInputStream fis = new FileInputStream(file);
+            //File file = new File(sExcelFileNamePath);
+            //FileInputStream fis = new FileInputStream(file);
             Workbook wb = WorkbookFactory.create(new File(sExcelFileNamePath));
             for (int i = 0; i < wb.getNumberOfSheets(); i++) {
                 // sheet
@@ -32,9 +32,9 @@ public class ExcelUtility {
                     headerRowList.add(hCell.toString());
                 }
 
-                for (int j = sheet.getTopRow(); j < sheet.getLastRowNum(); j++) {
+                for (int j = sheet.getTopRow() + 1; j < sheet.getLastRowNum(); j++) {
                     Row curRow = sheet.getRow(j);
-                    if (j == sheet.getTopRow() || curRow.getCell(curRow.getFirstCellNum(), Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString().isEmpty()) {
+                    if (curRow.getCell(curRow.getFirstCellNum(), Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString().isEmpty()) {
                         continue;
                     }
                     HashMap<String, String> curRowMap = new HashMap<>();
