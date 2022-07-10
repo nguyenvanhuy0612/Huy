@@ -6,7 +6,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service as ChromeService
 import time
+
+from webdriver_manager.chrome import ChromeDriverManager
 
 options = Options()
 # options.add_argument("--disable-extensions")
@@ -20,7 +23,7 @@ options.add_argument("disable-popup-blocking")
 options.add_argument("excludeSwitches")
 options.add_argument("--start-maximized")
 
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome(options=options, service=ChromeService(ChromeDriverManager().install()))
 driver.implicitly_wait(30)
 driver.set_page_load_timeout(60)
 action = ActionChains(driver)
@@ -28,16 +31,12 @@ wait = WebDriverWait(driver, 60)
 
 
 def find_click(x1):
-    global driver
-    global wait
     e = wait.until(EC.element_to_be_clickable((By.XPATH, x1)))
     time.sleep(1)
     e.click()
 
 
-def see_and_click(x1, x2 = "x1"):
-    global driver
-    global wait
+def see_and_click(x1, x2="x1"):
     wait.until(EC.visibility_of_element_located((By.XPATH, x1)))
     time.sleep(1)
     if x2 == "x1":
@@ -46,15 +45,11 @@ def see_and_click(x1, x2 = "x1"):
 
 
 def wait_to_see(x1):
-    global wait
-    global driver
     wait.until(EC.visibility_of_element_located((By.XPATH, x1)))
     time.sleep(1)
 
 
 def number_of(x1, t=3):
-    global driver
-    global wait
     driver.implicitly_wait(t)
     num = len(driver.find_elements(By.XPATH, x1))
     driver.implicitly_wait(30)
@@ -62,15 +57,13 @@ def number_of(x1, t=3):
 
 
 def try_click(x1):
-    global driver, wait
-    if number_of(x1) !=0:
+    if number_of(x1) != 0:
         time.sleep(1)
         driver.find_element(By.XPATH, x1).click()
     time.sleep(1)
 
 
 def login():
-    global driver
     url = "https://dev-8.ixcc-sandbox.avayacloud.com/services/ApplicationCenter/AdminPortal"
     login_user, login_pass = "admin@pomsv1.com", "Avaya123$"
     # login
@@ -85,12 +78,10 @@ def login():
 
 
 def add_queue(queue, description):
-    global driver
-    global wait
-    #go to contact center
+    # go to contact center
     if "expand" not in driver.find_element(By.XPATH, "//li[@data-sidebar-id='ContactCenter']").get_attribute("class"):
         driver.find_element(By.XPATH, "//li[@data-sidebar-id='ContactCenter']").click()
-    #add queue
+    # add queue
     find_click("//li[@data-sidebar-id='Queues']")
     wait_to_see("//div[@id='commProfForm']//tbody")
     time.sleep(1)
@@ -112,11 +103,10 @@ def add_queue(queue, description):
 
 
 def add_agent(agent_user, agent_pass, agent_queue, profile_name):
-    global driver, wait
-    #go to User management
+    # go to User management
     if "expand" not in driver.find_element(By.XPATH, "//li[@data-sidebar-id='Config']").get_attribute("class"):
         driver.find_element(By.XPATH, "//li[@data-sidebar-id='Config']").click()
-    #go to user
+    # go to user
     driver.find_element(By.XPATH, "//li[@data-sidebar-id='Manage Users']").click()
 
     wait_to_see("//div[@class='user-list-table']//div[@class='avaya-table avaya-table-streched']//tbody")
@@ -137,15 +127,16 @@ def add_agent(agent_user, agent_pass, agent_queue, profile_name):
     driver.find_element(By.XPATH, "//div[@title='" + profile_name + "']").click()  # profile name: ProactiveOutreach
     time.sleep(3)
     driver.find_element(By.XPATH, "//div[@aria-labelledby='queue-nameid']").click()
-    driver.find_element(By.XPATH, "//div[@aria-labelledby='queue-nameid']//div[@title='" + agent_queue + "']/parent::li").click() # queue name:
+    driver.find_element(By.XPATH,
+                        "//div[@aria-labelledby='queue-nameid']//div[@title='" + agent_queue + "']/parent::li").click()  # queue name:
     time.sleep(1)
     driver.find_element(By.XPATH, "//div[@id='Manage Users']//button[text()='Save']").click()
     wait.until(EC.presence_of_element_located((By.XPATH, "//div[@class='user-list-table']//tbody[@style]")))
     time.sleep(3)
 
 
-#TODO#####
-login()
-add_queue("tma22", "tma22")
-add_agent("tma22", "Avaya123$", "tma22", "OutreachProfile")
-
+# TODO#####
+if __name__ == '__main__':
+    login()
+    add_queue("tma22", "tma22")
+    add_agent("tma22", "Avaya123$", "tma22", "OutreachProfile")

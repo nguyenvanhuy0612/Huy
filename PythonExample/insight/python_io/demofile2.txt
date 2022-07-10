@@ -36,4 +36,5 @@ Result: a new empty file is created!
 Example
 Create a new file if it does not exist:
 
-f = open("myfile.txt", "w")
+f = open("myfile.txt", "w")Now the file has more content!
+Now the file has more content!
