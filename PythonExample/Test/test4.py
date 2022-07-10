@@ -4,22 +4,25 @@ import os
 from pathlib import Path
 import csv
 
+#
+# with open("gia.html", "br") as f:
+#     raw_data = f.read()
+#
+raw_file = open('thns.html', mode='r', encoding='utf-8')
+raw_data = raw_file.read()
+raw_file.close()
 
-with open("gia.html", "br") as f:
-    data = f.read()
 
-soup = BeautifulSoup(data, features='html.parser')
+soup = BeautifulSoup(markup=raw_data, features='html.parser', from_encoding='utf-8')
 # print(soup.prettify())
 
 list_data = soup.find(id='list_sale_price')
 
 
 def save_file(content, path):
-    output_file = Path(path)
-    output_file.parent.mkdir(exist_ok=True, parents=True)
-    content = (content + '\n').encode('utf-8')
-    with open(path, "ab+") as f:
-        f.write(content)
+    file_object = Path(path)
+    file_object.parent.mkdir(exist_ok=True, parents=True)
+    file_object.write_text(content, encoding='utf-8', newline='')
 
 
 groups = list_data.find_all(attrs={"class": "group-product"})
@@ -50,26 +53,21 @@ for group in groups:
         save_file(rowData, new_file)
 
 
-data = {}
+data_result = {}
 for group in groups:
     header = group.find(name='div', class_="group-name", recursive=False).get_text().replace("/", "")
-    #print(header)
-    #print(header.encode('utf-8'))
-    hData = []
+    row_data = []
     for rows in group.find_all(name='div', class_="table-row", recursive=False):
-        #rowData = ""
-        cur_row = []
-        list_row = rows.find_all(name='div', class_=re.compile("tb-col-"))
-        for row in list_row:
-            row_text = row.get_text()
-            if (row_text is None):
-                row_text = ""
-            cur_row.append(row_text)
-        hData.append(cur_row)
-    data[header] = hData
+        cell_data = []
+        for cell in rows.find_all(name='div', class_=re.compile("tb-col-")):
+            cell_text = cell.get_text()
+            cell_text = cell_text if cell_text is not None else ''
+            cell_data.append(cell_text)
+        row_data.append(cell_data)
+    data_result[header] = row_data
 
-for header, list_row in data.items():
-    new_file_object = open("data/" + header + ".tsv", "a+", encoding="utf-8")
+for header, list_row in data_result.items():
+    new_file_object = open("data/" + header + ".tsv", "w", encoding="utf-8")
     file_writer = csv.writer(new_file_object, delimiter='\t')
     file_writer.writerow(['', header, '', ''])
     for row in list_row:
