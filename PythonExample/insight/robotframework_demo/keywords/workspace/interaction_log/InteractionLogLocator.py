@@ -1,0 +1,15 @@
+LOC_INTERACTIONLOG_BTN_INTERACTIONLOG = "xpath://button[@id='ow_open_logs']"
+
+LOC_INTERACTIONLOG_LINE_CALL = "xpath://md-content/cc-worklog/md-content/md-tabs/md-tabs-content-wrapper/md-tab-content[1]/div/md-content/md-card/md-card-content"
+PHONE_URI = "XXX"
+LOC_INTERACTIONLOG_BTN_CALL = "xpath://md-tab-content[1]/div/md-content/md-card/md-card-content/md-list-item/span[@aria-label='Click to call " + PHONE_URI + "']"
+
+LOC_WORKSPACE_LOGIN_IPT_PASSWORD = "xpath://input[@id='password']"
+LOC_WORKSPACE_LOGIN_AGENT = "xpath://*[contains(text(), 'Login Agent')]"
+LOC_WORKSPACE_LOGIN_BTN_SIGNIN = "login-button"
+LOC_WORKSPACE_LOGIN_BTN_ACTIVATE = "xpath://button[@puppeteer-id='activate--button']"
+LOC_WORKSPACE_LOGIN_LABEL_AGENT = "xpath://h1[@class='md-title']"
+LOC_WORKSPACE_LOGIN_BTN_STARTWORK = "xpath://button[@puppeteer-id='start-work--button']"
+LOC_WORKSPACE_LOGOUT = "xpath://button[contains(@id, 'login-button') or contains(@id, 'ow_activate')]"
+LOC_WORKSPACE_HOME_DROPDOWN_MENU = "xpath://button[@puppeteer-id='agent--dropdown-button']"
+LOC_WORKSPACE_HOME_MENU_HEADER = "xpath://div[@class='menu-header__data']"

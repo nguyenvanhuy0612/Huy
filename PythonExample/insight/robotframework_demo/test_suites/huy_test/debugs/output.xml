@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.2 (Python 3.7.9 on win32)" generated="20210319 15:27:57.239" rpa="false">
+<suite id="s1" name="Huy Check Pass Dict As An Argument" source="C:\Users\Administrator\Documents\AACC_AUTO\aacc\test_suites\huy_test\huy_check_pass_dict_as_an_argument.robot">
+<test id="s1-t1" name="Test Case 1">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>key1=value1</arg>
+<arg>key2=another value</arg>
+</arguments>
+<assign>
+<var>&amp;{a dict}</var>
+</assign>
+<msg timestamp="20210319 15:27:57.324" level="INFO">&amp;{a dict} = { key1=value1 | key2=another value }</msg>
+<status status="PASS" starttime="20210319 15:27:57.323" endtime="20210319 15:27:57.324"></status>
+</kw>
+<kw name="My Keyword That Works With Dictionaries">
+<arguments>
+<arg>&amp;{a dict}</arg>
+</arguments>
+<kw name="Set Local Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the local scope.</doc>
+<arguments>
+<arg>${dct["key1"]}</arg>
+</arguments>
+<assign>
+<var>${item1}</var>
+</assign>
+<msg timestamp="20210319 15:27:57.327" level="INFO">${dct["key1"]} = value1</msg>
+<msg timestamp="20210319 15:27:57.327" level="INFO">${item1} = None</msg>
+<status status="PASS" starttime="20210319 15:27:57.326" endtime="20210319 15:27:57.327"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${\n}This is item1 for key1 ${item1}</arg>
+</arguments>
+<status status="PASS" starttime="20210319 15:27:57.327" endtime="20210319 15:27:57.328"></status>
+</kw>
+<status status="PASS" starttime="20210319 15:27:57.325" endtime="20210319 15:27:57.328"></status>
+</kw>
+<status status="PASS" starttime="20210319 15:27:57.322" endtime="20210319 15:27:57.330" critical="yes"></status>
+</test>
+<doc>https://stackoverflow.com/questions/54303252/how-to-pass-dictionary-as-an-argument-in-some-method-that-will-take-all-the-user</doc>
+<status status="PASS" starttime="20210319 15:27:57.244" endtime="20210319 15:27:57.333"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Huy Check Pass Dict As An Argument">Huy Check Pass Dict As An Argument</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

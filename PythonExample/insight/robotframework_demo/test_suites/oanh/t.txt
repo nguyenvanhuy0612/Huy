@@ -1,0 +1,57 @@
+UIAutomation 2.0.3 (Python 3.7.1, 64 bit)
+please wait for 5 seconds
+
+2020-05-26 09:22:06.432 automation.py[75] main -> Starts, Current Cursor Position: (128, 624)
+ControlType: PaneControl    ClassName: #32769    AutomationId:     Rect: (0,0,1916,1006)[1916x1006]    Name: Desktop    Handle: 0x10010(65552)    Depth: 0    SupportedPattern: LegacyIAccessiblePattern
+    ControlType: PaneControl    ClassName: Chrome_WidgetWin_1    AutomationId:     Rect: (-8,-8,1924,974)[1932x982]    Name: Avaya IX™ Workspaces 3.7.0.1 -...    Handle: 0x22F0CD2(36637906)    Depth: 1    SupportedPattern: LegacyIAccessiblePattern TransformPattern WindowPattern
+        ControlType: DocumentControl    ClassName: Chrome_RenderWidgetHostHWND    AutomationId: -1747947616    Rect: (0,115,1100,966)[1100x851]    Name:     Handle: 0x341120(3412256)    Depth: 2    ScrollPattern.HorizontalScrollPercent: 0.0    ScrollPattern.VerticalScrollPercent: 0.0    SupportedPattern: LegacyIAccessiblePattern ScrollPattern
+        ControlType: DocumentControl    ClassName: Chrome_RenderWidgetHostHWND    AutomationId: -1616516672    Rect: (0,115,1916,966)[1916x851]    Name:     Handle: 0x531402(5444610)    Depth: 2    ScrollPattern.HorizontalScrollPercent: 0.0    ScrollPattern.VerticalScrollPercent: 0.0    SupportedPattern: LegacyIAccessiblePattern ScrollPattern
+        ControlType: TitleBarControl    ClassName:     AutomationId:     Rect: (0,0,0,0)[0x0]    Name:     Handle: 0x0(0)    Depth: 2    ValuePattern.Value: Avaya IX™ Workspaces 3.7.0.1 -...    SupportedPattern: LegacyIAccessiblePattern ValuePattern
+            ControlType: MenuBarControl    ClassName:     AutomationId: MenuBar    Rect: (0,0,22,22)[22x22]    Name: System    Handle: 0x0(0)    Depth: 3    SupportedPattern: LegacyIAccessiblePattern
+                ControlType: MenuItemControl    ClassName:     AutomationId:     Rect: (0,0,22,22)[22x22]    Name: System    Handle: 0x0(0)    Depth: 4    ExpandCollapsePattern.ExpandCollapseState: ExpandCollapseState.Collapsed    SupportedPattern: ExpandCollapsePattern InvokePattern LegacyIAccessiblePattern
+            ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (0,0,0,0)[0x0]    Name: Minimize    Handle: 0x0(0)    Depth: 3    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+            ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (0,0,0,0)[0x0]    Name: Restore    Handle: 0x0(0)    Depth: 3    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+            ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (0,0,0,0)[0x0]    Name: Close    Handle: 0x0(0)    Depth: 3    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+        ControlType: PaneControl    ClassName:     AutomationId:     Rect: (0,-8,1916,966)[1916x974]    Name: Google Chrome    Handle: 0x0(0)    Depth: 2    SupportedPattern: LegacyIAccessiblePattern
+            ControlType: PaneControl    ClassName:     AutomationId:     Rect: (0,-8,1916,966)[1916x974]    Name:     Handle: 0x0(0)    Depth: 3    SupportedPattern: LegacyIAccessiblePattern
+                ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (1779,0,1824,29)[45x29]    Name: Minimize    Handle: 0x0(0)    Depth: 4    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+                ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (1824,0,1870,29)[46x29]    Name: Restore    Handle: 0x0(0)    Depth: 4    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+                ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (1870,0,1916,29)[46x29]    Name: Close    Handle: 0x0(0)    Depth: 4    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+            ControlType: PaneControl    ClassName:     AutomationId:     Rect: (0,0,1916,966)[1916x966]    Name:     Handle: 0x0(0)    Depth: 3    SupportedPattern: LegacyIAccessiblePattern
+                ControlType: PaneControl    ClassName:     AutomationId:     Rect: (0,0,1916,71)[1916x71]    Name:     Handle: 0x0(0)    Depth: 4    SupportedPattern: LegacyIAccessiblePattern
+                    ControlType: PaneControl    ClassName:     AutomationId:     Rect: (0,0,1779,35)[1779x35]    Name:     Handle: 0x0(0)    Depth: 5    SupportedPattern: LegacyIAccessiblePattern
+                        ControlType: TabControl    ClassName:     AutomationId:     Rect: (0,0,1779,35)[1779x35]    Name:     Handle: 0x0(0)    Depth: 6    SupportedPattern: LegacyIAccessiblePattern SelectionPattern
+                            ControlType: TabItemControl    ClassName:     AutomationId:     Rect: (0,0,256,35)[256x35]    Name: Avaya IX™ Workspaces 3.7.0.1    Handle: 0x0(0)    Depth: 7    SelectionItemPattern.IsSelected: True    SupportedPattern: LegacyIAccessiblePattern SelectionItemPattern
+                                ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (220,0,256,35)[36x35]    Name: Close    Handle: 0x0(0)    Depth: 8    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+                            ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (248,0,292,31)[44x31]    Name: New Tab    Handle: 0x0(0)    Depth: 7    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+                    ControlType: PaneControl    ClassName:     AutomationId:     Rect: (0,34,1916,70)[1916x36]    Name:     Handle: 0x0(0)    Depth: 5    SupportedPattern: LegacyIAccessiblePattern
+                        ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (0,38,36,66)[36x28]    Name: Back    Handle: 0x0(0)    Depth: 6    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+                        ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (40,38,68,66)[28x28]    Name: Forward    Handle: 0x0(0)    Depth: 6    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+                        ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (72,38,100,66)[28x28]    Name: Reload    Handle: 0x0(0)    Depth: 6    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+                        ControlType: GroupControl    ClassName:     AutomationId:     Rect: (108,38,1795,66)[1687x28]    Name:     Handle: 0x0(0)    Depth: 6    SupportedPattern: LegacyIAccessiblePattern
+                            ControlType: PaneControl    ClassName:     AutomationId:     Rect: (107,37,1796,67)[1689x30]    Name:     Handle: 0x0(0)    Depth: 7    SupportedPattern: LegacyIAccessiblePattern
+                            ControlType: MenuItemControl    ClassName:     AutomationId:     Rect: (110,40,227,64)[117x24]    Name: Not secure    Handle: 0x0(0)    Depth: 7    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+                                ControlType: CustomControl    ClassName:     AutomationId:     Rect: (0,0,0,0)[0x0]    Name:     Handle: 0x0(0)    Depth: 8    SupportedPattern: LegacyIAccessiblePattern
+                            ControlType: EditControl    ClassName:     AutomationId:     Rect: (224,40,1759,64)[1535x24]    Name: Address and search bar    Handle: 0x0(0)    Depth: 7    ValuePattern.Value: 100.30.6.137:31380/services/Un...    SupportedPattern: LegacyIAccessiblePattern ValuePattern
+                            ControlType: PaneControl    ClassName:     AutomationId:     Rect: (1761,40,1793,64)[32x24]    Name:     Handle: 0x0(0)    Depth: 7    SupportedPattern: LegacyIAccessiblePattern
+                                ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (1761,40,1793,64)[32x24]    Name: Bookmark this tab    Handle: 0x0(0)    Depth: 8    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+                                    ControlType: CustomControl    ClassName:     AutomationId:     Rect: (0,0,0,0)[0x0]    Name:     Handle: 0x0(0)    Depth: 9    SupportedPattern: LegacyIAccessiblePattern
+                        ControlType: GroupControl    ClassName:     AutomationId:     Rect: (1795,38,1848,66)[53x28]    Name: Extensions    Handle: 0x0(0)    Depth: 6    SupportedPattern: LegacyIAccessiblePattern
+                            ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (1803,38,1831,66)[28x28]    Name: Chrome Automation Extension
+Ha...    Handle: 0x0(0)    Depth: 7    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+                            ControlType: SeparatorControl    ClassName:     AutomationId:     Rect: (1795,38,1803,66)[8x28]    Name:     Handle: 0x0(0)    Depth: 7    SupportedPattern: LegacyIAccessiblePattern
+                            ControlType: PaneControl    ClassName:     AutomationId:     Rect: (1839,44,1840,60)[1x16]    Name:     Handle: 0x0(0)    Depth: 7    SupportedPattern: LegacyIAccessiblePattern
+                        ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (1848,38,1876,66)[28x28]    Name: Current user    Handle: 0x0(0)    Depth: 6    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+                        ControlType: MenuItemControl    ClassName:     AutomationId:     Rect: (1880,38,1916,66)[36x28]    Name: Chrome    Handle: 0x0(0)    Depth: 6    ExpandCollapsePattern.ExpandCollapseState: ExpandCollapseState.Collapsed    SupportedPattern: ExpandCollapsePattern InvokePattern LegacyIAccessiblePattern
+                    ControlType: PaneControl    ClassName:     AutomationId:     Rect: (0,70,1916,71)[1916x1]    Name:     Handle: 0x0(0)    Depth: 5    SupportedPattern: LegacyIAccessiblePattern
+                ControlType: PaneControl    ClassName:     AutomationId:     Rect: (0,115,1916,966)[1916x851]    Name:     Handle: 0x0(0)    Depth: 4    SupportedPattern: LegacyIAccessiblePattern
+                    ControlType: DocumentControl    ClassName:     AutomationId:     Rect: (0,0,0,0)[0x0]    Name:     Handle: 0x0(0)    Depth: 5    SupportedPattern: LegacyIAccessiblePattern
+                    ControlType: DocumentControl    ClassName:     AutomationId:     Rect: (0,0,0,0)[0x0]    Name:     Handle: 0x0(0)    Depth: 5    SupportedPattern: LegacyIAccessiblePattern
+                ControlType: GroupControl    ClassName:     AutomationId:     Rect: (0,71,1916,115)[1916x44]    Name: Infobar Container    Handle: 0x0(0)    Depth: 4    SupportedPattern: LegacyIAccessiblePattern
+                    ControlType: CustomControl    ClassName:     AutomationId:     Rect: (0,71,1916,115)[1916x44]    Name: Infobar    Handle: 0x0(0)    Depth: 5    SupportedPattern: LegacyIAccessiblePattern
+                        ControlType: TextControl    ClassName:     AutomationId:     Rect: (16,83,336,103)[320x20]    Name: Chrome is being controlled by ...    Handle: 0x0(0)    Depth: 6    SupportedPattern: LegacyIAccessiblePattern
+                        ControlType: ButtonControl    ClassName:     AutomationId:     Rect: (1880,81,1904,105)[24x24]    Name: Close    Handle: 0x0(0)    Depth: 6    SupportedPattern: InvokePattern LegacyIAccessiblePattern
+                    ControlType: PaneControl    ClassName:     AutomationId:     Rect: (0,115,1916,129)[1916x14]    Name:     Handle: 0x0(0)    Depth: 5    SupportedPattern: LegacyIAccessiblePattern
+                ControlType: PaneControl    ClassName:     AutomationId:     Rect: (0,0,0,0)[0x0]    Name:     Handle: 0x0(0)    Depth: 4    SupportedPattern: LegacyIAccessiblePattern
+2020-05-26 09:22:08.361 automation.py[110] main -> Ends
+

@@ -1,0 +1,3 @@
+from vars import *
+
+print(CUSTOMER_SEARCH_CHECKBOX_IS_RESTRICTED)

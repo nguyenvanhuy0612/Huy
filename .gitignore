@@ -10,3 +10,5 @@
 *.classpath
 *.ipynb_checkpoints
 */logs
+*/Code Cache
+@AutomationLog.txt
