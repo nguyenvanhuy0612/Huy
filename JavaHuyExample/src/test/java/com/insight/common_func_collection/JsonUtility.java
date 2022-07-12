@@ -1,19 +1,20 @@
 package com.insight.common_func_collection;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class JsonUtility {
+    public static Gson gson;
+
+    static {
+        gson = new GsonBuilder().setPrettyPrinting().create();
+    }
 
     public static void findJsonElement(JsonElement jsonElement, String key, List<JsonElement> result) {
         if (jsonElement.isJsonArray()) {
@@ -36,23 +37,55 @@ public class JsonUtility {
     }
 
 
-    public static JsonElement stringToJson(String jsonData) {
+    public static JsonElement parseStrToJson(String jsonData) {
         return JsonParser.parseString(jsonData);
     }
 
-    public static void parseJson(Object obj, String fileNamePath) {
-        Gson gson = new Gson();
-        try {
+    public static JsonElement stringToJsonElement(String jsonString) {
+        return gson.fromJson(jsonString, JsonElement.class);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static void writeObjectToFile(Object obj, String fileNamePath) {
+        try (Writer writer = new FileWriter(fileNamePath)) {
             // 1. Java object to JSON file
-            gson.toJson(obj, new FileWriter(fileNamePath));
+            gson.toJson(obj, writer);
             // 2. Java object to JSON string
-            String json = gson.toJson(obj);
+            // String json = gson.toJson(obj);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void readJsonFile(String fileNamePath) {
+    public static void writeJsonElementToFile(JsonElement jsonElement, String fileNamePath) {
+        try (Writer writer = new FileWriter(fileNamePath)) {
+            // write json element to file fileNamePath
+            gson.toJson(jsonElement, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeJsonObjectToFile(JsonObject jsonObject, String fileNamePath) {
+        try (Writer writer = new FileWriter(fileNamePath)) {
+            // write json object to file fileNamePath
+            gson.toJson(jsonObject, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static JsonElement readFileToJsonElement(String fileNamePath) {
+        try {
+            return gson.fromJson(new FileReader(fileNamePath), JsonElement.class);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void readJsonFile_Test(String fileNamePath) {
         // just example
         try (JsonReader reader = new JsonReader(new FileReader(fileNamePath))) {
             reader.beginObject();
@@ -93,7 +126,7 @@ public class JsonUtility {
 
     }
 
-    public static void writeJsonToFile(String fileNamePath) {
+    public static void writeJsonToFile_Test(String fileNamePath) {
 
         // just example
         try (JsonWriter writer = new JsonWriter(new FileWriter(fileNamePath))) {

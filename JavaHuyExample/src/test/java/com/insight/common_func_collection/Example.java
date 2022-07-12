@@ -1,5 +1,7 @@
 package com.insight.common_func_collection;
 
+import com.google.gson.JsonElement;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -9,17 +11,24 @@ import java.util.Properties;
 public class Example {
 
     public static void main(String[] args) {
+        String fileNamePath = System.getProperty("user.dir") + "/src/test/resources/user.json";
+        String fileNamePath2 = System.getProperty("user.dir") + "/src/test/resources/user3.json";
+        JsonElement jsonElement = JsonUtility.readFileToJsonElement(fileNamePath);
+        JsonUtility.writeJsonElementToFile(jsonElement, fileNamePath2);
+    }
+
+    public static void main4(String[] args) {
         String fileNamePath = System.getProperty("user.dir") + "/src/test/java/com/data/WorkspaceCCaaS.xlsx";
         HashMap<String, List<HashMap<String, String>>> results = ExcelUtility.readExcelFile(fileNamePath);
         System.out.println(results);
 
-        HashMap<String, String> resultMap = ExcelUtility.readExcelFile(fileNamePath,"Agent", "Verify agent cannot complete dial when do not select completion code");
+        HashMap<String, String> resultMap = ExcelUtility.readExcelFile(fileNamePath, "Agent", "Verify agent cannot complete dial when do not select completion code");
         System.out.println(resultMap);
     }
 
     public static void main3(String[] args) {
         InputStream inputStream = Example.class.getClassLoader().getResourceAsStream("user.json");
-        JsonUtility.writeJsonToFile(System.getProperty("user.dir") + "/src/test/resources/user.json");
+        JsonUtility.writeJsonToFile_Test(System.getProperty("user.dir") + "/src/test/resources/user111.json");
     }
 
     public static void main2(String[] args) {
