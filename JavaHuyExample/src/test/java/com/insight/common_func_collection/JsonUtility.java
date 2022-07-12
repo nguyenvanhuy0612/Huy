@@ -85,6 +85,31 @@ public class JsonUtility {
         return null;
     }
 
+    public static JsonElement parseFileToJson(String fileNamePath) {
+        try {
+            return JsonParser.parseReader(new FileReader(fileNamePath));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static JsonObject parseFileToJsonObject(String fileNamePath) {
+        try {
+            JsonElement jsonElement = JsonParser.parseReader(new FileReader(fileNamePath));
+            if (jsonElement.isJsonObject())
+                return jsonElement.getAsJsonObject();
+            else if (jsonElement.isJsonArray() | jsonElement.isJsonPrimitive()) {
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.add("data", jsonElement);
+                return jsonObject;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void readJsonFile_Test(String fileNamePath) {
         // just example
         try (JsonReader reader = new JsonReader(new FileReader(fileNamePath))) {

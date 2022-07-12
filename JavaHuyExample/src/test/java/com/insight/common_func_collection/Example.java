@@ -1,7 +1,10 @@
 package com.insight.common_func_collection;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -10,11 +13,13 @@ import java.util.Properties;
 
 public class Example {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         String fileNamePath = System.getProperty("user.dir") + "/src/test/resources/user.json";
         String fileNamePath2 = System.getProperty("user.dir") + "/src/test/resources/user3.json";
         JsonElement jsonElement = JsonUtility.readFileToJsonElement(fileNamePath);
         JsonUtility.writeJsonElementToFile(jsonElement, fileNamePath2);
+        JsonElement jsonElement1 = JsonParser.parseReader(new FileReader(fileNamePath));
+        System.out.println(jsonElement1);
     }
 
     public static void main4(String[] args) {
