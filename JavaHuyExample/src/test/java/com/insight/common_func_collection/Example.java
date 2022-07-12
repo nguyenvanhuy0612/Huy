@@ -2,24 +2,31 @@ package com.insight.common_func_collection;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.google.gson.internal.LinkedTreeMap;
+import org.apache.commons.io.FileUtils;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Properties;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 public class Example {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         String fileNamePath = System.getProperty("user.dir") + "/src/test/resources/user.json";
-        String fileNamePath2 = System.getProperty("user.dir") + "/src/test/resources/user3.json";
+        String fileNamePath2 = System.getProperty("user.dir") + "/src/test/resources/user2.json";
         JsonElement jsonElement = JsonUtility.readFileToJsonElement(fileNamePath);
-        JsonUtility.writeJsonElementToFile(jsonElement, fileNamePath2);
+        //JsonUtility.writeJsonElementToFile(jsonElement, fileNamePath2);
         JsonElement jsonElement1 = JsonParser.parseReader(new FileReader(fileNamePath));
         System.out.println(jsonElement1);
+
+        String fileStr1 = FileUtility.readFileAsString(fileNamePath);
+        String fileStr2 = FileUtils.readFileToString(new File(fileNamePath2), StandardCharsets.UTF_8);
+
+        HashMap<String, Object> fileMap2 = JsonUtility.jsonStringToMap(fileStr2);
+        LinkedHashMap<String, Object> fileLinkedMap2 = JsonUtility.jsonStringToLinkedHashMap(fileStr2);
+        System.out.println(fileMap2);
+        TreeMap treeMap = new TreeMap();
+        LinkedTreeMap linkedTreeMap = new LinkedTreeMap();
     }
 
     public static void main4(String[] args) {

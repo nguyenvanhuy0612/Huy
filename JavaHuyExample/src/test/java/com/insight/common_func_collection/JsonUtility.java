@@ -1,13 +1,12 @@
 package com.insight.common_func_collection;
 
 import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 import java.io.*;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class JsonUtility {
     public static Gson gson;
@@ -108,6 +107,18 @@ public class JsonUtility {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static HashMap<String, Object> jsonObjectToMap(JsonObject jsonObject) {
+        return gson.fromJson(jsonObject, new TypeToken<HashMap<String, Object>>() {}.getType());
+    }
+
+    public static HashMap<String, Object> jsonStringToMap(String jsonString) {
+        return gson.fromJson(jsonString, new TypeToken<HashMap<String, Object>>() {}.getType());
+    }
+
+    public static LinkedHashMap<String, Object> jsonStringToLinkedHashMap(String jsonString) {
+        return gson.fromJson(jsonString, new TypeToken<LinkedHashMap<String, Object>>() {}.getType());
     }
 
     public static void readJsonFile_Test(String fileNamePath) {
