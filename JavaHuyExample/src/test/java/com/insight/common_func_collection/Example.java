@@ -5,7 +5,10 @@ import com.google.gson.JsonParser;
 import com.google.gson.internal.LinkedTreeMap;
 import org.apache.commons.io.FileUtils;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -13,7 +16,11 @@ public class Example {
 
     public static void main(String[] args) {
         String fileNamePath = System.getProperty("user.dir") + "/src/test/resources/file.xlsx";
-        ExcelUtility.writeToFile(fileNamePath);
+        String[][] data = new String[][]{
+                new String[]{"Name", "Age"},
+                new String[]{"Huy", "20"}
+        };
+        ExcelUtility.writeToFile(data, fileNamePath, "sheel1");
     }
 
     public static void main5(String[] args) throws IOException {

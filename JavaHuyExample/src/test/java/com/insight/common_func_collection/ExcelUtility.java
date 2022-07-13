@@ -10,7 +10,7 @@ import java.util.*;
 
 public class ExcelUtility {
 
-    public static void writeListToFile(String[][] data, String fileNamePath, String sheetName) {
+    public static void writeToFile(String[][] data, String fileNamePath, String sheetName) {
         try {
             Workbook workbook = WorkbookFactory.create(true);
             Sheet sheet = workbook.createSheet(sheetName);
