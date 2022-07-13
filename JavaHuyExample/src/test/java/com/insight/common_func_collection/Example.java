@@ -11,7 +11,12 @@ import java.util.*;
 
 public class Example {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        String fileNamePath = System.getProperty("user.dir") + "/src/test/resources/file.xlsx";
+        ExcelUtility.writeToFile(fileNamePath);
+    }
+
+    public static void main5(String[] args) throws IOException {
         String fileNamePath = System.getProperty("user.dir") + "/src/test/resources/user.json";
         String fileNamePath2 = System.getProperty("user.dir") + "/src/test/resources/user2.json";
         JsonElement jsonElement = JsonUtility.readFileToJsonElement(fileNamePath);

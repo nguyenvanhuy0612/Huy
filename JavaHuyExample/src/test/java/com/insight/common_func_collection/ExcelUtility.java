@@ -1,16 +1,78 @@
 package com.insight.common_func_collection;
 
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.*;
 
 public class ExcelUtility {
+
+    public static void writeListToFile(String[][] data, String fileNamePath, String sheetName) {
+        try {
+            Workbook workbook = WorkbookFactory.create(true);
+            Sheet sheet = workbook.createSheet(sheetName);
+            for (int i = 0; i < data.length; i++) {
+                Row row = sheet.createRow(i);
+                String[] rData = data[i];
+                for (int j = 0; j < rData.length; j++) {
+                    row.createCell(j, CellType.STRING).setCellValue(rData[j]);
+//                    String cData = rData[j];
+//                    if (cData instanceof String)
+//                        row.createCell(j, CellType.STRING).setCellValue(cData.toString());
+//                    else if (cData instanceof Integer)
+//                        row.createCell(j, CellType.NUMERIC).setCellValue((Integer) cData);
+//                    else if (cData instanceof Double)
+//                        row.createCell(j, CellType.NUMERIC).setCellValue((Double) cData);
+//                    else if (cData instanceof Float)
+//                        row.createCell(j, CellType.NUMERIC).setCellValue((Float) cData);
+                }
+            }
+            FileOutputStream output = new FileOutputStream(fileNamePath);
+            workbook.write(output);
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeToFile(String fileNamePath) {
+        try {
+            Workbook workbook = WorkbookFactory.create(true);
+            //
+            XSSFWorkbook workbook1 = new XSSFWorkbook();
+            Sheet spreadsheet = workbook.createSheet("Student Data");
+
+            Map<String, Object[]> studentData = new TreeMap<>();
+            studentData.put("1", new Object[]{"Roll No", "NAME", "Year"});
+            studentData.put("2", new Object[]{"128", "Aditya", "2nd year"});
+            studentData.put("3", new Object[]{"129", "Narayana", "2nd year"});
+            studentData.put("4", new Object[]{"130", "Mohan", "2nd year"});
+            studentData.put("5", new Object[]{"131", "Radha", "2nd year"});
+            studentData.put("6", new Object[]{"132", "Gopal", "2nd year"});
+            List<String> keyid = new ArrayList<>(studentData.keySet());
+
+            for (int i = 0; i < studentData.size(); i++) {
+                Row row = spreadsheet.createRow(i);
+                Object[] cellArr = studentData.get(keyid.get(i));
+
+                for (int j = 0; j < cellArr.length; j++) {
+                    Cell cell = row.createCell(j, CellType.STRING);
+                    cell.setCellValue(cellArr[j].toString());
+                }
+            }
+            FileOutputStream fileOutputStream = new FileOutputStream(fileNamePath);
+            workbook.write(fileOutputStream);
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static HashMap<String, List<HashMap<String, String>>> readExcelFile(String sExcelFileNamePath) {
         System.out.println("Entering method " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -41,21 +103,21 @@ public class ExcelUtility {
                 }
 
                 for (int j = firstRowNum + 1; j <= lastRowNum; j++) {
-                    Row curRow = sheet.getRow(j);
+                    Row row = sheet.getRow(j);
 
-                    short firstCellNum = curRow.getFirstCellNum();
-                    short lastCellNum = curRow.getLastCellNum();
+                    short firstCellNum = row.getFirstCellNum();
+                    short lastCellNum = row.getLastCellNum();
 
-                    if (curRow.getCell(firstCellNum, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString().isEmpty()) {
+                    if (row.getCell(firstCellNum, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString().isEmpty()) {
                         continue;
                     }
 
                     HashMap<String, String> curRowMap = new HashMap<>();
                     for (int k = firstCellNum; k < headerRowList.size(); k++) {
-                        Cell rowCell = curRow.getCell(k);
-                        String cellValue = dataFormatter.formatCellValue(rowCell, formulaEvaluator);
+                        Cell cell = row.getCell(k);
+                        String cellValue = dataFormatter.formatCellValue(cell, formulaEvaluator);
                         curRowMap.put(headerRowList.get(k - firstCellNum), cellValue);
-                        //curRowMap.put(headerRowList.get(k - firstCellNum), curRow.getCell(k, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString());
+                        //curRowMap.put(headerRowList.get(k - firstCellNum), row.getCell(k, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString());
                     }
                     curSheetData.add(curRowMap);
                 }
@@ -154,13 +216,13 @@ public class ExcelUtility {
             }
 
             for (int j = firstRowNum + 1; j <= lastRowNum; j++) {
-                Row curRow = sheet.getRow(j);
-                short firstCellNum = curRow.getFirstCellNum();
-                short lastCellNum = curRow.getLastCellNum();
-                if (curRow.getCell(firstCellNum).toString().equalsIgnoreCase(sTestCaseName)) {
+                Row row = sheet.getRow(j);
+                short firstCellNum = row.getFirstCellNum();
+                short lastCellNum = row.getLastCellNum();
+                if (row.getCell(firstCellNum).toString().equalsIgnoreCase(sTestCaseName)) {
                     for (int k = firstCellNum; k < headerRowList.size(); k++) {
-                        Cell rowCell = curRow.getCell(k);
-                        String cellValue = dataFormatter.formatCellValue(rowCell, formulaEvaluator);
+                        Cell cell = row.getCell(k);
+                        String cellValue = dataFormatter.formatCellValue(cell, formulaEvaluator);
                         data.put(headerRowList.get(k - firstCellNum), cellValue);
                     }
                     break;
