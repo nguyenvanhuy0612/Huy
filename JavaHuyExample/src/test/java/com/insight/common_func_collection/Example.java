@@ -20,6 +20,10 @@ public class Example {
                 new String[]{"Name", "Age"},
                 new String[]{"Huy", "20"}
         };
+
+        //ArrayList<String> lists = (ArrayList<String>) Arrays.asList("");
+        List<String> list = new ArrayList<>();
+        list.toArray();
         ExcelUtility.writeToFile(data, fileNamePath, "sheel1");
     }
 

@@ -10,6 +10,11 @@ import java.util.*;
 
 public class ExcelUtility {
 
+    public static void writeToFile(List<List<String>> data, String fileNamePath, String sheetName) {
+        String[][] stringArray = data.stream().map(u -> u.toArray(new String[0])).toArray(String[][]::new);
+        writeToFile(stringArray, fileNamePath, sheetName);
+    }
+
     public static void writeToFile(String[][] data, String fileNamePath, String sheetName) {
         try {
             Workbook workbook = WorkbookFactory.create(true);
