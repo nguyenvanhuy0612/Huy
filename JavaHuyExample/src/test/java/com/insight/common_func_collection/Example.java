@@ -21,6 +21,12 @@ public class Example {
                 new String[]{"Huy", "20"}
         };
 
+        List<List<String>> dataList = Arrays.asList(Arrays.asList("Name", "Age"), Arrays.asList("Huy", "20"));
+        String[][] dataListConv = dataList.stream().map(u -> u.toArray(new String[0])).toArray(String[][]::new);
+
+        Object[] objects = dataList.toArray(new List[0]);
+        System.out.println(objects);
+
         //ArrayList<String> lists = (ArrayList<String>) Arrays.asList("");
         List<String> list = new ArrayList<>();
         list.toArray();
