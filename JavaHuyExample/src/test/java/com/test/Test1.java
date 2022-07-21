@@ -10,13 +10,18 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Test1 {
+
+    public static void main(String[] args) throws IOException {
+        Properties properties = System.getProperties();
+        Files.deleteIfExists(Paths.get("huy.txt"));
+    }
 
     @Test
     public void test1() {
@@ -30,7 +35,7 @@ public class Test1 {
         list.add("23");
         list.add("856");
 
-        System.out.println(list.toString());
+        System.out.println(list);
 
         String jsonString = "{'employee.name':'Bob','employee.salary':10000}";
         Gson gson = new Gson();
