@@ -1,4 +1,4 @@
-package com.demo_log4j.lib;
+package com.practice.demo_log4j.lib;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

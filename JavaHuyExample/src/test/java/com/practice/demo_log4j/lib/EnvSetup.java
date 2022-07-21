@@ -1,4 +1,4 @@
-package com.demo_log4j.lib;
+package com.practice.demo_log4j.lib;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

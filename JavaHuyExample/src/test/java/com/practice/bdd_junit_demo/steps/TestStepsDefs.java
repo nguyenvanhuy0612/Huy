@@ -1,6 +1,5 @@
 package com.practice.bdd_junit_demo.steps;
 
-import com.demo_log4j.scripts.Log4J2_Test;
 import com.practice.bdd_junit_demo.lib.EnvSetup;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
