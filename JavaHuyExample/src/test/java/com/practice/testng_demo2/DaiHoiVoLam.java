@@ -18,6 +18,29 @@ public class DaiHoiVoLam {
         Object object = clazz.getDeclaredConstructor().newInstance();
 
         Method method = object.getClass().getMethod(properties.getProperty("method"));
+
+        // Listener
+        boolean testStatus = true;
+        try {
+            method.invoke(object);
+        } catch (Exception e) {
+            e.printStackTrace();
+            testStatus = false;
+        }
+        System.out.println("testStatus: " + testStatus);
+    }
+
+    public static void main3(String[] args) throws Exception {
+
+        Properties properties = new Properties();
+        InputStream inputStream = new FileInputStream("src/test/java/com/practice/testng_demo2/run.properties");
+        properties.load(inputStream);
+        inputStream.close();
+
+        Class<?> clazz = Class.forName(properties.getProperty("class"));
+        Object object = clazz.getDeclaredConstructor().newInstance();
+
+        Method method = object.getClass().getMethod(properties.getProperty("method"));
         method.invoke(object);
 
         for (Method m : object.getClass().getMethods()) {
