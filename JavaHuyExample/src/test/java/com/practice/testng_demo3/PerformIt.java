@@ -9,4 +9,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface PerformIt {
     String value() default "";
+    boolean enabled() default true;
+    long timeOut() default 0;
+    int priority() default 0;
 }
