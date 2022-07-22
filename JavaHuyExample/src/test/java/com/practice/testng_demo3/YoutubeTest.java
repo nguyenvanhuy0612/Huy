@@ -22,7 +22,7 @@ public class YoutubeTest {
     }
 
     @PerformIt
-    public void seachMusicHiFi() {
+    public void searchMusicHiFi() {
         System.out.printf("%s perform %s\n", this.getClass().getSimpleName(), Thread.currentThread().getStackTrace()[1].getMethodName());
         Utils.wait(3);
     }

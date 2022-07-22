@@ -15,6 +15,13 @@ import java.time.Duration;
 public class SeleniumActionTest {
     WebDriver driver;
 
+    public static void wait(int secs) {
+        try {
+            Thread.sleep(secs * 1000L);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Test
     public void test1() {
@@ -44,24 +51,25 @@ public class SeleniumActionTest {
         Page24h page24hObj = new Page24h(driver);
         page24hObj.testTextMatch();
 
+        WebElement sourceNodeElement = driver.findElement(By.xpath("/html"));
+        int xOffset = 838;
+        int yOffset = 27;
 
-        SeleniumActionTest.wait(15);
+        actions.moveToElement(sourceNodeElement, 1, 1)
+                .clickAndHold().pause(Duration.ofMillis(500))
+                .moveByOffset(xOffset, yOffset).pause(Duration.ofMillis(500))
+                .release().build().perform();
+
+
+        wait(15);
 
         int x = 10;
 
-        new WebDriverWait(driver, Duration.ofSeconds(10)).pollingEvery(Duration.ofSeconds(30 > x ? 1 :2));
+        new WebDriverWait(driver, Duration.ofSeconds(10)).pollingEvery(Duration.ofSeconds(30 > x ? 1 : 2));
 
         driver.close();
 
 
-    }
-
-    public static void wait(int secs) {
-        try {
-            Thread.sleep(secs * 1000L);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
 }

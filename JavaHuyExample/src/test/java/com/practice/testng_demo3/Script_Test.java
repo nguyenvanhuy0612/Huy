@@ -76,7 +76,7 @@ public class Script_Test {
         youtubeTest.verifySearch();
         facebookTest.verifyLogin();
         googleTest.gmailSpamTest();
-        youtubeTest.seachMusicHiFi();
+        youtubeTest.searchMusicHiFi();
     }
 
 
