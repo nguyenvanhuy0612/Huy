@@ -1,5 +1,7 @@
 package com.practice.testng_demo3;
 
+import org.testng.annotations.Listeners;
+
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Method;
@@ -19,9 +21,15 @@ public class Huy_TestNGCustom {
         Object object = clazz.getDeclaredConstructor().newInstance();
 
         for (Method method : object.getClass().getMethods()) {
-            if (method.isAnnotationPresent(PerformIt.class) && method.getName().contentEquals(properties.getProperty("method"))){
+            if (method.isAnnotationPresent(PerformIt.class)
+                    && method.getName().contentEquals(properties.getProperty("method"))){
+                ListenerSuitePerform value1 = object.getClass().getAnnotation(HuyListener.class).value()[0].getConstructor().newInstance();
+                System.out.println("Run on start");
+                value1.onStart();
+
                 PerformIt annotation = method.getAnnotation(PerformIt.class);
                 String value = annotation.value();
+                System.out.println("Run test");
                 method.invoke(object);
             }
         }

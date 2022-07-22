@@ -1,5 +1,6 @@
 package com.practice.testng_demo3;
 
+@HuyListener(HuyListenerClass.class)
 public class GoogleTest {
 
     public void verifySearch() {

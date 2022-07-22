@@ -1,7 +1,7 @@
 package com.practice.testng_demo3;
 
+@HuyListener(HuyListenerClass.class)
 public class YoutubeTest {
-    private final String phai = "Minh Giao";
 
     @PerformIt
     public void verifySearch() {
