@@ -1,4 +1,4 @@
-package com.practice.demo_log4j.lib;
+package com.practice.log4j_demo.lib;
 
 
 import org.testng.*;

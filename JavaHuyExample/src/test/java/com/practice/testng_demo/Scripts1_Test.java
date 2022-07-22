@@ -1,6 +1,6 @@
 package com.practice.testng_demo;
 
-import com.practice.demo_log4j.lib.InitLog4j2;
+import com.practice.log4j_demo.lib.InitLog4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.BeforeSuite;

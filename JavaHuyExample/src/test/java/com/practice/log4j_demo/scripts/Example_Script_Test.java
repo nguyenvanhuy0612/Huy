@@ -1,4 +1,4 @@
-package com.practice.demo_log4j.scripts;
+package com.practice.log4j_demo.scripts;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

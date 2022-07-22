@@ -1,4 +1,4 @@
-package com.practice.demo_log4j.scripts;
+package com.practice.log4j_demo.scripts;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
-package com.practice.demo_log4j.scripts;
+package com.practice.log4j_demo.scripts;
 
-import com.practice.demo_log4j.lib.InitLog4j2;
+import com.practice.log4j_demo.lib.InitLog4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,7 +9,7 @@ public class Log4j_Test2 {
 
     public static void main(String[] args) {
 
-//        String fileNamePath = System.getProperty("user.dir") + "\\src\\test\\java\\com\\demo_log4j\\data\\config\\log4j2_config4.xml";
+//        String fileNamePath = System.getProperty("user.dir") + "\\src\\test\\java\\com\\log4j_demo\\data\\config\\log4j2_config4.xml";
 //        File file = new File(fileNamePath);
 //        LoggerContext context = (LoggerContext) LogManager.getContext(false);
 //        context.setConfigLocation(file.toURI());
