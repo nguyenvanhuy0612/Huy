@@ -22,12 +22,14 @@ public class Listener implements ISuiteListener, ITestListener, IReporter {
     public void onStart(ISuite suite) {
         System.out.println(this.getClass().getName() + " onStart(ISuite suite)");
         ACCESS.set(suite);
+        //System.out.println(this.getClass().getName() + " " + suite.getName());
     }
 
     @Override
     public void onFinish(ISuite suite) {
         System.out.println(this.getClass().getName() + " onFinish(ISuite suite)");
         ISuiteListener.super.onFinish(suite);
+        //System.out.println(this.getClass().getName() + " " + suite.getName());
     }
 
     /////////////////////////// ITestListener ///////////////////////////
@@ -35,48 +37,56 @@ public class Listener implements ISuiteListener, ITestListener, IReporter {
     public void onTestStart(ITestResult result) {
         System.out.println(this.getClass().getName() + " onTestStart(ITestResult result)");
         ITestListener.super.onTestStart(result);
+        //System.out.println(this.getClass().getName() + " " + result.getName());
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
         System.out.println(this.getClass().getName() + " onTestSuccess(ITestResult result)");
         ITestListener.super.onTestSuccess(result);
+        //System.out.println(this.getClass().getName() + " " + result.getName());
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.println(this.getClass().getName() + " onTestFailure(ITestResult result)");
         ITestListener.super.onTestFailure(result);
+        //System.out.println(this.getClass().getName() + " " + result.getName());
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         System.out.println(this.getClass().getName() + " onTestSkipped(ITestResult result)");
         ITestListener.super.onTestSkipped(result);
+        //System.out.println(this.getClass().getName() + " " + result.getName());
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
         System.out.println(this.getClass().getName() + " onTestFailedButWithinSuccessPercentage(ITestResult result)");
         ITestListener.super.onTestFailedButWithinSuccessPercentage(result);
+        //System.out.println(this.getClass().getName() + " " + result.getName());
     }
 
     @Override
     public void onTestFailedWithTimeout(ITestResult result) {
         System.out.println(this.getClass().getName() + " onTestFailedWithTimeout(ITestResult result)");
         ITestListener.super.onTestFailedWithTimeout(result);
+        //System.out.println(this.getClass().getName() + " " + result.getName());
     }
 
     @Override
     public void onStart(ITestContext context) {
         System.out.println(this.getClass().getName() + " onStart(ITestContext context)");
         ITestListener.super.onStart(context);
+        //System.out.println(this.getClass().getName() + " " + context.getName());
     }
 
     @Override
     public void onFinish(ITestContext context) {
         System.out.println(this.getClass().getName() + " onFinish(ITestContext context)");
         ITestListener.super.onFinish(context);
+        //System.out.println(this.getClass().getName() + " " + context.getName());
     }
 
     @Override

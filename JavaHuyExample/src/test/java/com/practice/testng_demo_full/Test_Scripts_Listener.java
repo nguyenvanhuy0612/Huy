@@ -2,15 +2,10 @@ package com.practice.testng_demo_full;
 
 import org.testng.annotations.*;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
-
 import static java.lang.System.out;
-import static java.lang.Thread.currentThread;
 
-@Listeners(Listener.class)
-public class Test_Scripts {
 
+public class Test_Scripts_Listener {
     @BeforeSuite
     public void bfSuite() {out.println("bfSuite");}
     @BeforeTest
