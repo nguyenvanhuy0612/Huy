@@ -52,4 +52,12 @@ public class DataUtils {
         objects[1][9] = "9999";
         return objects;
     }
+
+    @DataProvider(name = "SingleStringProvider")
+    public static Object[][] dpSingleStringProvider() {
+        out.format("Class: %s \nMethod: %s\n", DataUtils.class.getSimpleName(), Thread.currentThread().getStackTrace()[1].getMethodName());
+        Object[][] objects = new Object[1][1];
+        objects[0][0] = "Huy";
+        return objects;
+    }
 }

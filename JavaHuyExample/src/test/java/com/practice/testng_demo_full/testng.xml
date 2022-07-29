@@ -5,7 +5,8 @@
         <classes>
             <class name="com.practice.testng_demo_full.Test_Scripts">
                 <methods>
-                    <include name="test1"/>
+                    <include name="testLoginGoogle"/>
+                    <exclude name="testLoginFacebook"/>
                 </methods>
             </class>
         </classes>
