@@ -9,10 +9,14 @@ import org.junit.runner.RunWith;
 import java.io.File;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = {"src/test/java/com/practice/bdd_junit_demo/resources/features"},
+@CucumberOptions(
+//        features = {"src/test/java/com/practice/bdd_junit_demo/resources/features"},
+        features = {"src/test/java/com/practice/bdd_junit_demo/resources/features"},
+//        glue = {"com.practice.bdd_junit_demo.steps"},
         glue = {"com.practice.bdd_junit_demo.steps"},
         monochrome = true,
-        tags = "not @ignored and (@test or @test1 or @test2)",
+        //tags = "not @ignored and (@test or @test1 or @test2)",
+        tags = "@TestData",
         publish = false,
         plugin = {"pretty",
                 "html:target/cucumber/reports/Cucumber.html",

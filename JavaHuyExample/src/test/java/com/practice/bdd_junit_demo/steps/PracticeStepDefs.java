@@ -17,4 +17,9 @@ public class PracticeStepDefs {
     public void test1() {
         log.info("Test1");
     }
+
+    @Given("Test Background")
+    public void testBackground() {
+        System.out.println("testBackground");
+    }
 }

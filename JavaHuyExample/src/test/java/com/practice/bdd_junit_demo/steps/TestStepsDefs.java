@@ -14,6 +14,11 @@ public class TestStepsDefs {
 
     private final Logger log = LogManager.getLogger(TestStepsDefs.class);
 
+    @ParameterType("red|blue|yellow")  // regexp
+    public String color(String color){  // type, name (from method)
+        return color.toUpperCase();       // transformer function
+    }
+
     @ParameterType("([0-9]{4})-([0-9]{2})-([0-9]{2})")
     public LocalDate iso8601Date(String year, String month, String day) {
         return LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));

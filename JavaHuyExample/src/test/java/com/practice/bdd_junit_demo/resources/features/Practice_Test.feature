@@ -1,3 +1,4 @@
+@Feature_Test1
 Feature: Practice
 
   @test1

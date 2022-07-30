@@ -1,6 +1,11 @@
+@Feature_Test
 Feature: Test
   This is test feature
 
+  Background: This is background
+    Given Go to url
+
+  @Scenario1 @Scenario2
   Scenario: Scenario test 1, login agent to workspace
     Given Go to url
     When Login agent
