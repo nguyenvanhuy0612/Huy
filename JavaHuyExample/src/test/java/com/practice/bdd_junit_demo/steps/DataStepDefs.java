@@ -1,11 +1,14 @@
 package com.practice.bdd_junit_demo.steps;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,32 +50,45 @@ public class DataStepDefs {
     }
 
     @Given("Load data for test first")
-    public void loadDataFirst() {
+    public void loadDataFirst(DataTable dataTable) {
         out.println("loadDataFirst");
+        out.println(dataTable);
     }
 
     @When("Load data second")
-    public void loadDataSecond() {
+    public void loadDataSecond(List<List<String>> table) {
         out.println("loadDataSecond");
+        out.println(table);
     }
 
-    @And("Load data third")
-    public void loadDataThird() {
+    //@And("Load data (?:third|List Map)")
+    @And("^Load data third|^Load data List Map")
+    public void loadDataThird(List<Map<String, String>> table) {
         out.println("loadDataThird");
+        out.println(table);
     }
 
-    @And("Load data fourth")
-    public void loadDataFourth() {
+    @And("^Load data fourth|^Load data Map")
+    public void loadDataFourth(Map<String, String> table) {
         out.println("loadDataFourth");
+        out.println(table);
     }
 
     @And("Load data fifth")
-    public void loadDataFifth() {
+    public void loadDataFifth(Map<String, List<String>> table) {
         out.println("loadDataFifth");
+        out.println(table);
     }
 
     @And("Load data sixth")
-    public void loadDataSixth() {
+    public void loadDataSixth(Map<String, Map<String, String>> table) {
         out.println("loadDataSixth");
+        out.println(table);
+    }
+
+    @And("Load data for list String")
+    public void loadDataForListString(List<String> table) {
+        out.println("loadDataForListString");
+        out.println(table);
     }
 }
