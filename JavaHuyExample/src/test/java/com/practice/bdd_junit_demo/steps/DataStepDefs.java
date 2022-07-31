@@ -91,4 +91,9 @@ public class DataStepDefs {
         out.println("loadDataForListString");
         out.println(table);
     }
+
+    @Given("Load DataTable exception")
+    public void loadDataTableException(DataTable dataTable) {
+        out.println("loadDataTableException");
+    }
 }

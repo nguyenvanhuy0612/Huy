@@ -9,6 +9,12 @@ Feature: Test data
     Given Get test DataFile: WorkspaceFile1 with Data: TestCase1
 
 
+  @Handle_Exception
+  Scenario: Test Data load exception
+    Given Load DataTable exception
+#      | DataFile    | TestDataID  |
+#      | file1.excel | Test case 1 |
+
   @Data
   Scenario: Scenario test data type
     Given Load data for test first
